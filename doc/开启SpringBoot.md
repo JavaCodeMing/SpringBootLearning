@@ -3,12 +3,12 @@
 ```text
 1.创建项目
 	[1]通过官方提供的网址创建
-		①访问http://start.spring.io/
-		②选择项目类型、编程语言、springboot版本、项目元数据(坐标)、依赖
+		(1)访问http://start.spring.io/
+		(2)选择项目类型、编程语言、springboot版本、项目元数据(坐标)、依赖
 	[2]通过eclipse或IDEA(以IDEA为例)
-		①File -> New -> Project -> Spring Initializr -> Next
-		②填项目元数据(坐标)、项目类型(Maven)、编程语言(Java)、打包方式(war/jar)、Java版本、项目的一些描述(可默认) -> Next
-		③选择需要添加的依赖(如Web ->勾选web)-> 选择springboot的版本号 -> finish
+		(1)File -> New -> Project -> Spring Initializr -> Next
+		(2)填项目元数据(坐标)、项目类型(Maven)、编程语言(Java)、打包方式(war/jar)、Java版本、项目的一些描述(可默认) -> Next
+		(3)选择需要添加的依赖(如Web ->勾选web)-> 选择springboot的版本号 -> finish
 2.聊聊pom.xml
 	[1]<parent>标签: 
 	    <parent>
@@ -17,8 +17,8 @@
             <version>2.1.3.RELEASE</version>
             <relativePath/>
         </parent>
-		①定义当前项目的springboot版本信息,spring-boot-starter-parent依赖提供了诸多的默认Maven依赖
-		②springboot版本声明的具体默认依赖版本可查看maven仓库下\org\springframework\boot\spring-boot-dependencies\XXX.RELEASE下的pom文件
+		(2)定义当前项目的springboot版本信息,spring-boot-starter-parent依赖提供了诸多的默认Maven依赖
+		(3)springboot版本声明的具体默认依赖版本可查看maven仓库下\org\springframework\boot\spring-boot-dependencies\XXX.RELEASE下的pom文件
 	[2]<dependency>标签:<dependencys>的子标签用于配置所需要的依赖
 		其常用的子标签有:<groupId>、<artifactId>、<version>(不填使用springboot默认的)、<scope>(依赖生效范围)、<exclusions>(依赖排除)
 	[3]<exclusion>标签:<exclusions>的子标签
