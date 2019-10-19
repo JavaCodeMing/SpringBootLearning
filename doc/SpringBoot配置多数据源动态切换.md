@@ -1,4 +1,5 @@
-1.ÒıÈëmybatisÒÀÀµ¡¢oracleÇı¶¯ÒÀÀµ¡¢mysqlÇı¶¯ÒÀÀµ¡¢druidÊı¾İÔ´Çı¶¯ÒÀÀµºÍaopÒÀÀµ:
+```text
+1.å¼•å…¥mybatisä¾èµ–ã€oracleé©±åŠ¨ä¾èµ–ã€mysqlé©±åŠ¨ä¾èµ–ã€druidæ•°æ®æºé©±åŠ¨ä¾èµ–å’Œaopä¾èµ–:
 	<dependency>
         <groupId>org.mybatis.spring.boot</groupId>
         <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -22,317 +23,318 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
-2.ÔÚapplication.ymlÎÄ¼şÖĞÅäÖÃ¶àÊı¾İÔ´:
-	# ·şÎñÆ÷ÏîÄ¿¸ùÂ·¾¶
-	server:
-		servlet:
-			context-path: /web
-	spring:
-		datasource:
-			druid:
-				master:
-					type: com.alibaba.druid.pool.DruidDataSource
-					driver-class-name: com.mysql.cj.jdbc.Driver
-					url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8
-					username: root
-					password: root
-					# Á¬½Ó³ØµÄÅäÖÃ
-					initial-size: 5
-					min-idle: 5
-					max-active: 20
-					# Á¬½ÓµÈ´ı³¬Ê±Ê±¼ä
-					max-wait: 30000
-					# ÅäÖÃ¼ì²â¿ÉÒÔ¹Ø±ÕµÄ¿ÕÏĞÁ¬½Ó¼ä¸ôÊ±¼ä
-					time-between-eviction-runs-millis: 60000
-					# ÅäÖÃÁ¬½ÓÔÚ³ØÖĞµÄ×îĞ¡Éú´æÊ±¼ä
-					min-evictable-idle-time-millis: 300000
-					validation-query: select '1' from dual
-					test-while-idle: true
-					test-on-borrow: false
-					test-on-return: false
-					# ´ò¿ªPSCache,²¢ÇÒÖ¸¶¨Ã¿¸öÁ¬½ÓÉÏµÄPSCacheµÄ´óĞ¡
-					pool-prepared-statements: true
-					max-open-prepared-statements: 20
-					max-pool-prepared-statement-per-connection-size: 20
-					# ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters,È¥µôºó¼à¿Ø½çÃæµÄsqlÎŞ·¨Í³¼Æ,'wall'ÓÃÓÚ·À»ğÇ½
-					filters: stat,wall
-				slave:
-					ds1:
-						type: com.alibaba.druid.pool.DruidDataSource
-						driver-class-name: oracle.jdbc.OracleDriver
-						url: jdbc:oracle:thin:@localhost:1521:orcl
-						username: scott
-						password: tigger
-						# Á¬½Ó³ØµÄÅäÖÃ
-						initial-size: 5
-						min-idle: 5
-						max-active: 20
-						# Á¬½ÓµÈ´ı³¬Ê±Ê±¼ä
-						max-wait: 30000
-						# ÅäÖÃ¼ì²â¿ÉÒÔ¹Ø±ÕµÄ¿ÕÏĞÁ¬½Ó¼ä¸ôÊ±¼ä
-						time-between-eviction-runs-millis: 60000
-						# ÅäÖÃÁ¬½ÓÔÚ³ØÖĞµÄ×îĞ¡Éú´æÊ±¼ä
-						min-evictable-idle-time-millis: 300000
-						validation-query: select '1' from dual
-						test-while-idle: true
-						test-on-borrow: false
-						test-on-return: false
-						# ´ò¿ªPSCache,²¢ÇÒÖ¸¶¨Ã¿¸öÁ¬½ÓÉÏµÄPSCacheµÄ´óĞ¡
-						pool-prepared-statements: true
-						max-open-prepared-statements: 20
-						max-pool-prepared-statement-per-connection-size: 20
-						# ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters,È¥µôºó¼à¿Ø½çÃæµÄsqlÎŞ·¨Í³¼Æ,'wall'ÓÃÓÚ·À»ğÇ½
-						filters: stat,wall
-			# ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters,È¥µôºó¼à¿Ø½çÃæµÄsqlÎŞ·¨Í³¼Æ,'wall'ÓÃÓÚ·À»ğÇ½(¶ÔÓÚ×Ô¶¨Òå¶àÊı¾İÔ´£¬ÕâÑùÅäÖÃsqlÎŞ·¨Í³¼Æ)
-			#filters: stat,wall
-			# Spring¼à¿ØµÄAOPÇĞÈëµã,Èçx.y.z.service.*,ÅäÖÃ¶à¸öÓ¢ÎÄ¶ººÅ·Ö¸ô
-			aop-patterns: com.springboot.service.*
-		
-			#WebStatFilterÅäÖÃ
-			web-stat-filter:
-				enabled: true
-				# Ìí¼Ó¹ıÂË¹æÔò
-				url-pattern: /*
-				# ºöÂÔ¹ıÂËµÄ¸ñÊ½
-				exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
-		
-			#StatViewFilterÅäÖÃ
-			stat-view-servlet:
-				enabled: true
-				#ÉèÖÃ½øÈëDruid¼à¿Ø½çÃæµÄÇëÇó
-				url-pattern: /druid/*
-				#ÊÇ·ñÄÜ¹»ÖØÖÃÊı¾İ
-				reset-enable: false
-				#ÉèÖÃ·ÃÎÊDruid¿ØÖÆÌ¨µÄÕË»§ºÍÃÜÂë
-				#login-username: admin
-				#login-password: admin
-				# IP°×Ãûµ¥
-				#allow: 127.0.0.1
-				# IPºÚÃûµ¥£¨¹²Í¬´æÔÚÊ±£¬denyÓÅÏÈÓÚallow£©
-				#deny: 192.168.1.218
-			#ÅäÖÃStatFilter
-			filter:
-				stat:
-					log-slow-sql: true
-				wall:
-					config:
-						multi-statement-allow: true
-	mybatis:
-		# type-aliasesÉ¨ÃèÂ·¾¶
-		# type-aliases-package:
-		# mapper xmlÊµÏÖÉ¨ÃèÂ·¾¶
-		mapper-locations: classpath:mapper/*.xml
-3.±àĞ´Êı¾İÔ´µÄÂ·ÓÉÀà:
-	public class DynamicDataSource extends AbstractRoutingDataSource {
-		//´úÂëÖĞµÄdetermineCurrentLookupKey·½·¨È¡µÃÒ»¸ö×Ö·û´®,
-		//¸Ã×Ö·û´®½«ÓëÅäÖÃÎÄ¼şÖĞµÄÏàÓ¦×Ö·û´®½øĞĞÆ¥ÅäÒÔ¶¨Î»Êı¾İÔ´
-		@Override
-		protected Object determineCurrentLookupKey() {
-			//DynamicDataSourceContextHolder´úÂëÖĞÊ¹ÓÃsetDataSourceType ÉèÖÃµ±Ç°µÄÊı¾İÔ´,
-			//ÔÚÂ·ÓÉÀàÖĞÊ¹ÓÃgetDataSourceType½øĞĞ»ñÈ¡,½»¸øAbstractRoutingDataSource½øĞĞ×¢ÈëÊ¹ÓÃ
-			return DynamicDataSourceContextHolder.getDataSourceType();
-		}
+2.åœ¨application.ymlæ–‡ä»¶ä¸­é…ç½®å¤šæ•°æ®æº:
+    # æœåŠ¡å™¨é¡¹ç›®æ ¹è·¯å¾„
+    server:
+    	servlet:
+    	    context-path: /web
+    spring:
+    	datasource:
+    	    druid:
+    	    	master:
+    	    	    type: com.alibaba.druid.pool.DruidDataSource
+    	    	    driver-class-name: com.mysql.cj.jdbc.Driver
+    	    	    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8
+    	    	    username: root
+    	    	    password: root
+    	    	    # è¿æ¥æ± çš„é…ç½®
+    	    	    initial-size: 5
+    	    	    min-idle: 5
+    	    	    max-active: 20
+    	    	    # è¿æ¥ç­‰å¾…è¶…æ—¶æ—¶é—´
+    	    	    max-wait: 30000
+    	    	    # é…ç½®æ£€æµ‹å¯ä»¥å…³é—­çš„ç©ºé—²è¿æ¥é—´éš”æ—¶é—´
+    	    	    time-between-eviction-runs-millis: 60000
+    	    	    # é…ç½®è¿æ¥åœ¨æ± ä¸­çš„æœ€å°ç”Ÿå­˜æ—¶é—´
+    	    	    min-evictable-idle-time-millis: 300000
+    	    	    validation-query: select '1' from dual
+    	    	    test-while-idle: true
+    	    	    test-on-borrow: false
+    	    	    test-on-return: false
+    	    	    # æ‰“å¼€PSCache,å¹¶ä¸”æŒ‡å®šæ¯ä¸ªè¿æ¥ä¸Šçš„PSCacheçš„å¤§å°
+    	    	    pool-prepared-statements: true
+    	    	    max-open-prepared-statements: 20
+    	    	    max-pool-prepared-statement-per-connection-size: 20
+    	    	    # é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filters,å»æ‰åç›‘æ§ç•Œé¢çš„sqlæ— æ³•ç»Ÿè®¡,'wall'ç”¨äºé˜²ç«å¢™
+    	    	    filters: stat,wall
+    	    	slave:
+    	    	    ds1:
+    	    	    	type: com.alibaba.druid.pool.DruidDataSource
+    	    	    	driver-class-name: oracle.jdbc.OracleDriver
+    	    	    	url: jdbc:oracle:thin:@localhost:1521:orcl
+    	    	    	username: scott
+    	    	    	password: tigger
+    	    	    	# è¿æ¥æ± çš„é…ç½®
+    	    	    	initial-size: 5
+    	    	    	min-idle: 5
+    	    	    	max-active: 20
+    	    	    	# è¿æ¥ç­‰å¾…è¶…æ—¶æ—¶é—´
+    	    	    	max-wait: 30000
+    	    	    	# é…ç½®æ£€æµ‹å¯ä»¥å…³é—­çš„ç©ºé—²è¿æ¥é—´éš”æ—¶é—´
+    	    	    	time-between-eviction-runs-millis: 60000
+    	    	    	# é…ç½®è¿æ¥åœ¨æ± ä¸­çš„æœ€å°ç”Ÿå­˜æ—¶é—´
+    	    	    	min-evictable-idle-time-millis: 300000
+    	    	    	validation-query: select '1' from dual
+    	    	    	test-while-idle: true
+    	    	    	test-on-borrow: false
+    	    	    	test-on-return: false
+    	    	    	# æ‰“å¼€PSCache,å¹¶ä¸”æŒ‡å®šæ¯ä¸ªè¿æ¥ä¸Šçš„PSCacheçš„å¤§å°
+    	    	    	pool-prepared-statements: true
+    	    	    	max-open-prepared-statements: 20
+    	    	    	max-pool-prepared-statement-per-connection-size: 20
+    	    	    	# é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filters,å»æ‰åç›‘æ§ç•Œé¢çš„sqlæ— æ³•ç»Ÿè®¡,'wall'ç”¨äºé˜²ç«å¢™
+    	    	    	filters: stat,wall
+    	    # é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filters,å»æ‰åç›‘æ§ç•Œé¢çš„sqlæ— æ³•ç»Ÿè®¡,'wall'ç”¨äºé˜²ç«å¢™(å¯¹äºè‡ªå®šä¹‰å¤šæ•°æ®æºï¼Œè¿™æ ·é…ç½®sqlæ— æ³•ç»Ÿè®¡)
+    	    #filters: stat,wall
+    	    # Springç›‘æ§çš„AOPåˆ‡å…¥ç‚¹,å¦‚x.y.z.service.*,é…ç½®å¤šä¸ªè‹±æ–‡é€—å·åˆ†éš”
+    	    aop-patterns: com.springboot.service.*
+    	
+    	    #WebStatFilteré…ç½®
+    	    web-stat-filter:
+    	    	enabled: true
+    	    	# æ·»åŠ è¿‡æ»¤è§„åˆ™
+    	    	url-pattern: /*
+    	    	# å¿½ç•¥è¿‡æ»¤çš„æ ¼å¼
+    	    	exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+    	
+    	    #StatViewFilteré…ç½®
+    	    stat-view-servlet:
+    	    	enabled: true
+    	    	#è®¾ç½®è¿›å…¥Druidç›‘æ§ç•Œé¢çš„è¯·æ±‚
+    	    	url-pattern: /druid/*
+    	    	#æ˜¯å¦èƒ½å¤Ÿé‡ç½®æ•°æ®
+    	    	reset-enable: false
+    	    	#è®¾ç½®è®¿é—®Druidæ§åˆ¶å°çš„è´¦æˆ·å’Œå¯†ç 
+    	    	#login-username: admin
+    	    	#login-password: admin
+    	    	# IPç™½åå•
+    	    	#allow: 127.0.0.1
+    	    	# IPé»‘åå•ï¼ˆå…±åŒå­˜åœ¨æ—¶ï¼Œdenyä¼˜å…ˆäºallowï¼‰
+    	    	#deny: 192.168.1.218
+    	    #é…ç½®StatFilter
+    	    filter:
+    	    	stat:
+    	    	    log-slow-sql: true
+    	    	wall:
+    	    	    config:
+    	    		multi-statement-allow: true
+    mybatis:
+    	# type-aliasesæ‰«æè·¯å¾„
+    	# type-aliases-package:
+    	# mapper xmlå®ç°æ‰«æè·¯å¾„
+    	mapper-locations: classpath:mapper/*.xml
+3.ç¼–å†™æ•°æ®æºçš„è·¯ç”±ç±»:
+    public class DynamicDataSource extends AbstractRoutingDataSource {
+    	//ä»£ç ä¸­çš„determineCurrentLookupKeyæ–¹æ³•å–å¾—ä¸€ä¸ªå­—ç¬¦ä¸²,
+    	//è¯¥å­—ç¬¦ä¸²å°†ä¸é…ç½®æ–‡ä»¶ä¸­çš„ç›¸åº”å­—ç¬¦ä¸²è¿›è¡ŒåŒ¹é…ä»¥å®šä½æ•°æ®æº
+    	@Override
+    	protected Object determineCurrentLookupKey() {
+    	    //DynamicDataSourceContextHolderä»£ç ä¸­ä½¿ç”¨setDataSourceType è®¾ç½®å½“å‰çš„æ•°æ®æº,
+    	    //åœ¨è·¯ç”±ç±»ä¸­ä½¿ç”¨getDataSourceTypeè¿›è¡Œè·å–,äº¤ç»™AbstractRoutingDataSourceè¿›è¡Œæ³¨å…¥ä½¿ç”¨
+    	    return DynamicDataSourceContextHolder.getDataSourceType();
+    	}
+    }
+4.ç¼–å†™åŠ¨æ€æ•°æ®æºä¸Šä¸‹æ–‡ç±»:
+    public class DynamicDataSourceContextHolder {
+    	//å½“ä½¿ç”¨ThreadLocalç»´æŠ¤å˜é‡æ—¶,ThreadLocalä¸ºæ¯ä¸ªä½¿ç”¨è¯¥å˜é‡çš„çº¿ç¨‹æä¾›ç‹¬ç«‹çš„å˜é‡å‰¯æœ¬,
+    	//æ‰€ä»¥æ¯ä¸€ä¸ªçº¿ç¨‹éƒ½å¯ä»¥ç‹¬ç«‹åœ°æ”¹å˜è‡ªå·±çš„å‰¯æœ¬,è€Œä¸ä¼šå½±å“å…¶å®ƒçº¿ç¨‹æ‰€å¯¹åº”çš„å‰¯æœ¬
+    	private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>();
+    	//ç®¡ç†æ‰€æœ‰çš„æ•°æ®æºid;ä¸»è¦æ˜¯ä¸ºäº†åˆ¤æ–­æ•°æ®æºæ˜¯å¦å­˜åœ¨;
+    	public static List<String> dataSourceIds = new ArrayList<String>();
+    	//è®¾ç½®æ•°æ®æº
+    	public static void setDataSourceType(String dataSourceType) { contextHolder.set(dataSourceType); }
+    	//è·å–æ•°æ®æº
+    	public static String getDataSourceType() { return contextHolder.get(); }
+    	//æ¸…é™¤æ•°æ®æº
+    	public static void clearDataSourceType() { contextHolder.remove(); }
+    	//åˆ¤æ–­æŒ‡å®šDataSrouceå½“å‰æ˜¯å¦å­˜åœ¨
+    	public static boolean containsDataSource(String dataSourceId){
+    	   return dataSourceIds.contains(dataSourceId);
+    	}
+    }
+5.ç¼–å†™åŠ¨æ€æ•°æ®æºæ³¨å†Œç±»:
+    // éœ€è¦åœ¨å…¥å£ç±»ä¸Šæ·»åŠ å¯¼å…¥æ³¨è§£: @Import(DynamicDataSourceRegister.class)
+    public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar, EnvironmentAware {
+    	//æŒ‡å®šé»˜è®¤æ•°æ®æº(springboot2.0é»˜è®¤æ•°æ®æºæ˜¯hikariå¦‚ä½•æƒ³ä½¿ç”¨å…¶ä»–æ•°æ®æºå¯ä»¥è‡ªå·±é…ç½®)
+    	private static final String DATASOURCE_TYPE_DEFAULT = "com.zaxxer.hikari.HikariDataSource";
+    	//é»˜è®¤æ•°æ®æº
+    	private DataSource defaultDataSource;
+    	//ç”¨æˆ·è‡ªå®šä¹‰æ•°æ®æº
+    	private Map<String, DataSource> slaveDataSources = new HashMap<>();
+    	private final static ConfigurationPropertyNameAliases aliases = new ConfigurationPropertyNameAliases(); //åˆ«å
+    	static {
+    	    //ç”±äºéƒ¨åˆ†æ•°æ®æºé…ç½®ä¸åŒï¼Œæ‰€ä»¥åœ¨æ­¤å¤„æ·»åŠ åˆ«åï¼Œé¿å…åˆ‡æ¢æ•°æ®æºå‡ºç°æŸäº›å‚æ•°æ— æ³•æ³¨å…¥çš„æƒ…å†µ
+    	    aliases.addAliases("url", new String[]{"jdbc-url"});
+    	    aliases.addAliases("username", new String[]{"user"});
+    	}
+    	@Override
+    	public void setEnvironment(Environment environment) {
+    	    initDefaultDataSource(environment);
+    	    initslaveDataSources(environment);
+    	}
+    	private void initDefaultDataSource(Environment env) {
+    	    // è¯»å–ä¸»æ•°æ®æº
+    	    Binder binder = Binder.get(env);
+    	    Map dsMap = binder.bind("spring.datasource.druid.master", Map.class).get();
+    	    defaultDataSource = buildDataSource(dsMap);
+    	}
+    	private void initslaveDataSources(Environment env) {
+    	    // è¯»å–é…ç½®æ–‡ä»¶è·å–æ›´å¤šæ•°æ®æº
+    	    Binder binder = Binder.get(env);
+    	    HashMap map = binder.bind("spring.datasource.druid.slave", HashMap.class).get();
+    	    for (Object o : map.entrySet()) {
+    	    	Map.Entry entry = (Map.Entry) o;
+    	    	String dsPrefix = (String) entry.getKey();
+    	    	Map<String, Object> dsMap = (Map<String, Object>) entry.getValue();
+    	    	DataSource ds = buildDataSource(dsMap);
+    	    	slaveDataSources.put(dsPrefix, ds);
+    	    }
+    	}
+    	@Override
+    	public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
+	    Map<Object, Object> targetDataSources = new HashMap<>();
+	    //æ·»åŠ é»˜è®¤æ•°æ®æº
+	    targetDataSources.put("dataSource", this.defaultDataSource);
+	    DynamicDataSourceContextHolder.dataSourceIds.add("dataSource");
+	    //æ·»åŠ å…¶ä»–æ•°æ®æº
+	    targetDataSources.putAll(slaveDataSources);
+	    DynamicDataSourceContextHolder.dataSourceIds.addAll(slaveDataSources.keySet());
+	    //åˆ›å»ºDynamicDataSource
+	    GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+	    beanDefinition.setBeanClass(DynamicDataSource.class);
+	    beanDefinition.setSynthetic(true);
+	    MutablePropertyValues mpv = beanDefinition.getPropertyValues();
+	    mpv.addPropertyValue("defaultTargetDataSource", defaultDataSource);
+	    mpv.addPropertyValue("targetDataSources", targetDataSources);
+	    //æ³¨å†Œ - BeanDefinitionRegistry
+	    beanDefinitionRegistry.registerBeanDefinition("dataSource", beanDefinition);
 	}
-4.±àĞ´¶¯Ì¬Êı¾İÔ´ÉÏÏÂÎÄÀà:
-	public class DynamicDataSourceContextHolder {
-		//µ±Ê¹ÓÃThreadLocalÎ¬»¤±äÁ¿Ê±,ThreadLocalÎªÃ¿¸öÊ¹ÓÃ¸Ã±äÁ¿µÄÏß³ÌÌá¹©¶ÀÁ¢µÄ±äÁ¿¸±±¾,
-		//ËùÒÔÃ¿Ò»¸öÏß³Ì¶¼¿ÉÒÔ¶ÀÁ¢µØ¸Ä±ä×Ô¼ºµÄ¸±±¾,¶ø²»»áÓ°ÏìÆäËüÏß³ÌËù¶ÔÓ¦µÄ¸±±¾
-		private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>();
-		//¹ÜÀíËùÓĞµÄÊı¾İÔ´id;Ö÷ÒªÊÇÎªÁËÅĞ¶ÏÊı¾İÔ´ÊÇ·ñ´æÔÚ;
-		public static List<String> dataSourceIds = new ArrayList<String>();
-		//ÉèÖÃÊı¾İÔ´
-		public static void setDataSourceType(String dataSourceType) { contextHolder.set(dataSourceType); }
-		//»ñÈ¡Êı¾İÔ´
-		public static String getDataSourceType() { return contextHolder.get(); }
-		//Çå³ıÊı¾İÔ´
-		public static void clearDataSourceType() { contextHolder.remove(); }
-		//ÅĞ¶ÏÖ¸¶¨DataSrouceµ±Ç°ÊÇ·ñ´æÔÚ
-		public static boolean containsDataSource(String dataSourceId){
-			return dataSourceIds.contains(dataSourceId);
-		}
-	}
-5.±àĞ´¶¯Ì¬Êı¾İÔ´×¢²áÀà:
-    // ĞèÒªÔÚÈë¿ÚÀàÉÏÌí¼Óµ¼Èë×¢½â: @Import(DynamicDataSourceRegister.class)
-	public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar, EnvironmentAware {
-		//Ö¸¶¨Ä¬ÈÏÊı¾İÔ´(springboot2.0Ä¬ÈÏÊı¾İÔ´ÊÇhikariÈçºÎÏëÊ¹ÓÃÆäËûÊı¾İÔ´¿ÉÒÔ×Ô¼ºÅäÖÃ)
-		private static final String DATASOURCE_TYPE_DEFAULT = "com.zaxxer.hikari.HikariDataSource";
-		//Ä¬ÈÏÊı¾İÔ´
-		private DataSource defaultDataSource;
-		//ÓÃ»§×Ô¶¨ÒåÊı¾İÔ´
-		private Map<String, DataSource> slaveDataSources = new HashMap<>();
-		private final static ConfigurationPropertyNameAliases aliases = new ConfigurationPropertyNameAliases(); //±ğÃû
-		static {
-			//ÓÉÓÚ²¿·ÖÊı¾İÔ´ÅäÖÃ²»Í¬£¬ËùÒÔÔÚ´Ë´¦Ìí¼Ó±ğÃû£¬±ÜÃâÇĞ»»Êı¾İÔ´³öÏÖÄ³Ğ©²ÎÊıÎŞ·¨×¢ÈëµÄÇé¿ö
-			aliases.addAliases("url", new String[]{"jdbc-url"});
-			aliases.addAliases("username", new String[]{"user"});
-		}
-		@Override
-		public void setEnvironment(Environment environment) {
-			initDefaultDataSource(environment);
-			initslaveDataSources(environment);
-		}
-		private void initDefaultDataSource(Environment env) {
-			// ¶ÁÈ¡Ö÷Êı¾İÔ´
-			Binder binder = Binder.get(env);
-			Map dsMap = binder.bind("spring.datasource.druid.master", Map.class).get();
-			defaultDataSource = buildDataSource(dsMap);
-		}
-		private void initslaveDataSources(Environment env) {
-			// ¶ÁÈ¡ÅäÖÃÎÄ¼ş»ñÈ¡¸ü¶àÊı¾İÔ´
-			Binder binder = Binder.get(env);
-			HashMap map = binder.bind("spring.datasource.druid.slave", HashMap.class).get();
-			for (Object o : map.entrySet()) {
-				Map.Entry entry = (Map.Entry) o;
-				String dsPrefix = (String) entry.getKey();
-				Map<String, Object> dsMap = (Map<String, Object>) entry.getValue();
-				DataSource ds = buildDataSource(dsMap);
-				slaveDataSources.put(dsPrefix, ds);
-			}
-		}
-		@Override
-		public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
-			Map<Object, Object> targetDataSources = new HashMap<>();
-			//Ìí¼ÓÄ¬ÈÏÊı¾İÔ´
-			targetDataSources.put("dataSource", this.defaultDataSource);
-			DynamicDataSourceContextHolder.dataSourceIds.add("dataSource");
-			//Ìí¼ÓÆäËûÊı¾İÔ´
-			targetDataSources.putAll(slaveDataSources);
-			DynamicDataSourceContextHolder.dataSourceIds.addAll(slaveDataSources.keySet());
-			//´´½¨DynamicDataSource
-			GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
-			beanDefinition.setBeanClass(DynamicDataSource.class);
-			beanDefinition.setSynthetic(true);
-			MutablePropertyValues mpv = beanDefinition.getPropertyValues();
-			mpv.addPropertyValue("defaultTargetDataSource", defaultDataSource);
-			mpv.addPropertyValue("targetDataSources", targetDataSources);
-			//×¢²á - BeanDefinitionRegistry
-			beanDefinitionRegistry.registerBeanDefinition("dataSource", beanDefinition);
-		}
-		private DataSource buildDataSource(Map dataSourceMap) {
-			try {
-				Object type = dataSourceMap.get("type");
-				if (type == null) { type = DATASOURCE_TYPE_DEFAULT;} // Ä¬ÈÏDataSource 
-				Class<? extends DataSource> dataSourceType;
-				dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
-				ConfigurationPropertySource source = new MapConfigurationPropertySource(dataSourceMap);
-				Binder binder = new Binder(source.withAliases(aliases));
-				return binder.bind(ConfigurationPropertyName.EMPTY, Bindable.of(dataSourceType)).get(); //Í¨¹ıÀàĞÍ°ó¶¨²ÎÊı²¢»ñµÃÊµÀı¶ÔÏó
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-	}
-6.±àĞ´Ö¸¶¨Êı¾İÔ´×¢½âÀà:
-	@Target({ ElementType.METHOD, ElementType.TYPE })
-	@Retention(RetentionPolicy.RUNTIME)
-	@Documented
-	public @interface TargetDataSource {
-		String value();
-	}
-7.±àĞ´ÇĞ»»Êı¾İÔ´AdviceÀà:
-	@Aspect
-	@Order(-1)//±£Ö¤¸ÃAOPÔÚ@TransactionalÖ®Ç°Ö´ĞĞ
-	@Component
-	public class DynamicDataSourceAspect {
-		/*
-		* @Before("@annotation(targetDataSource)"):
-		*   @Before±ê×¢µÄ·½·¨»áÔÚ@targetDataSource±ê×¢µÄ·½·¨Ö®Ç°Ö´ĞĞ
-		*/
-		@Before("@annotation(targetDataSource)")
-		public void changeDataSource(JoinPoint point, TargetDataSource targetDataSource) throws Throwable {
-			//»ñÈ¡µ±Ç°µÄÖ¸¶¨µÄÊı¾İÔ´;
-			String dsId = targetDataSource.value();
-			//Èç¹û²»ÔÚÎÒÃÇ×¢ÈëµÄËùÓĞµÄÊı¾İÔ´·¶Î§Ö®ÄÚ£¬ÄÇÃ´Êä³ö¾¯¸æĞÅÏ¢£¬ÏµÍ³×Ô¶¯Ê¹ÓÃÄ¬ÈÏµÄÊı¾İÔ´¡£
-			if (!DynamicDataSourceContextHolder.containsDataSource(dsId)) {
-				System.err.println("Êı¾İÔ´[{}]²»´æÔÚ,Ê¹ÓÃÄ¬ÈÏÊı¾İÔ´ > {}"+targetDataSource.value()+point.getSignature());
-			} else {
-				System.out.println("Use DataSource : {} > {}"+targetDataSource.value()+point.getSignature());
-				//ÕÒµ½µÄ»°,ÄÇÃ´ÉèÖÃµ½¶¯Ì¬Êı¾İÔ´ÉÏÏÂÎÄÖĞ
-				DynamicDataSourceContextHolder.setDataSourceType(targetDataSource.value());
-			}
-		}
-		@After("@annotation(targetDataSource)")
-		public void restoreDataSource(JoinPoint point, TargetDataSource targetDataSource) {
-			System.out.println("Revert DataSource : {} > {}"+targetDataSource.value()+point.getSignature());
-			//·½·¨Ö´ĞĞÍê±ÏÖ®ºó,Ïú»Ùµ±Ç°Êı¾İÔ´ĞÅÏ¢,½øĞĞÀ¬»ø»ØÊÕ
-			DynamicDataSourceContextHolder.clearDataSourceType();
-		}
-	}
-8.¶àÊı¾İÔ´¶¯Ì¬ÇĞ»»²âÊÔ:
-	[1]´´½¨Êı¾İ¿â±í¼°²åÈëÊı¾İ(mysql5.5,oracle11g)
-		Mysql:
-			DROP TABLE IF EXISTS `student`;
-			CREATE TABLE `student` (
-			`sno` varchar(3) NOT NULL,
-			`sname` varchar(9) NOT NULL,
-			`ssex` char(2) NOT NULL,
-			`database` varchar(10) DEFAULT NULL
-			) DEFAULT CHARSET=utf8;
-			INSERT INTO `student` VALUES ('001', '¿µ¿µ', 'M', 'mysql');
-			INSERT INTO `student` VALUES ('002', 'Âó¿Ë', 'M', 'mysql');
-		Oracle:
-			DROP TABLE "SCOTT"."STUDENT";
-			CREATE TABLE "SCOTT"."STUDENT" (
-			"SNO" VARCHAR2(3 BYTE) NOT NULL ,
-			"SNAME" VARCHAR2(9 BYTE) NOT NULL ,
-			"SSEX" CHAR(2 BYTE) NOT NULL ,
-			"database" VARCHAR2(10 BYTE) NULL 
-			);
-			INSERT INTO "SCOTT"."STUDENT" VALUES ('001', 'KangKang', 'M ', 'oracle');
-			INSERT INTO "SCOTT"."STUDENT" VALUES ('002', 'Mike', 'M ', 'oracle');
-			INSERT INTO "SCOTT"."STUDENT" VALUES ('003', 'Jane', 'F ', 'oracle');
-			INSERT INTO "SCOTT"."STUDENT" VALUES ('004', 'Maria', 'F ', 'oracle');
-	[2]±àĞ´Mapper½Ó¿Ú:
-		@Component
-		@Mapper
-		public interface StudentMapper {
-			List<Map<String, Object>> getAllStudents();
-		}
-	[3]±àĞ´MapperµÄÊµÏÖ:
-	    // ĞèÒªÔÚÈë¿ÚÀàÉÏÌí¼ÓxmlÎÄ¼şµÄÉ¨Ãè×¢½â: @MapperScan("com.springboot.dao")
-		<?xml version="1.0" encoding="UTF-8" ?>
-		<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-		<mapper namespace="com.example.multidatasource.dao.StudentMapper">
-			<select id="getAllStudents" resultType="java.util.Map">
-				select * from student
-			</select>
-		</mapper>
-	[4]±àĞ´Service½Ó¿Ú:
-		public interface StudentService {
-			List<Map<String,Object>> getAllStudentsFromMysql();
-			List<Map<String,Object>> getAllStudentsFromOracle();
-		}
-	[5]±àĞ´ServiceµÄÊµÏÖÀà:
-		@Service("studentService")
-		public class StudentServiceImp implements StudentService {
-			@Autowired
-			private StudentMapper studentMapper;
-			@Override
-			@Transactional	//Ö÷Êı¾İÔ´µÄÊÂÎñ(bug:´ÓÊı¾İÔ´²»¿ÉÊ¹ÓÃ¸Ã×¢½â)
-			public List<Map<String, Object>> getAllStudentsFromMaster() {
-				return this.studentMapper.getAllStudents();
-			}
-			@Override
-			@TargetDataSource("ds1")
-			public List<Map<String, Object>> getAllStudentsFromSlave() {
-				return this.studentMapper.getAllStudents();
-			}
-		}
-	[6]±àĞ´Controller:
-		@RestController
-		public class DataSourceController {
-			@Autowired
-			private StudentService studentService;
-			@RequestMapping("/querystudentsfromoracle")
-			public List<Map<String,Object>> queryStudentsFromOracle(){
-				return this.studentService.getAllStudentsFromSlave();
-			}
-			@RequestMapping("/querystudentsfrommysql")
-			public List<Map<String,Object>> queryStudentsFromMysql(){
-				return this.studentService.getAllStudentsFromMaster();
-			}
-		}
-	[7]²âÊÔMySQLÊı¾İÔ´: http://localhost:8080/web/querystudentsfrommysql
-       ²âÊÔOracleÊı¾İÔ´: http://localhost:8080/web/querystudentsfromoracle
+	private DataSource buildDataSource(Map dataSourceMap) {
+	    try {
+	    	Object type = dataSourceMap.get("type");
+	    	if (type == null) { type = DATASOURCE_TYPE_DEFAULT;} // é»˜è®¤DataSource 
+	    	Class<? extends DataSource> dataSourceType;
+	    	dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
+	    	ConfigurationPropertySource source = new MapConfigurationPropertySource(dataSourceMap);
+	    	Binder binder = new Binder(source.withAliases(aliases));
+	    	return binder.bind(ConfigurationPropertyName.EMPTY, Bindable.of(dataSourceType)).get(); //é€šè¿‡ç±»å‹ç»‘å®šå‚æ•°å¹¶è·å¾—å®ä¾‹å¯¹è±¡
+            } catch (ClassNotFoundException e) {
+        	e.printStackTrace();
+            }
+            return null;
+        }
+    }
+6.ç¼–å†™æŒ‡å®šæ•°æ®æºæ³¨è§£ç±»:
+    @Target({ ElementType.METHOD, ElementType.TYPE })
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    public @interface TargetDataSource {
+    	String value();
+    }
+7.ç¼–å†™åˆ‡æ¢æ•°æ®æºAdviceç±»:
+    @Aspect
+    @Order(-1)//ä¿è¯è¯¥AOPåœ¨@Transactionalä¹‹å‰æ‰§è¡Œ
+    @Component
+    public class DynamicDataSourceAspect {
+    	/*
+    	* @Before("@annotation(targetDataSource)"):
+    	*   @Beforeæ ‡æ³¨çš„æ–¹æ³•ä¼šåœ¨@targetDataSourceæ ‡æ³¨çš„æ–¹æ³•ä¹‹å‰æ‰§è¡Œ
+    	*/
+    	@Before("@annotation(targetDataSource)")
+    	public void changeDataSource(JoinPoint point, TargetDataSource targetDataSource) throws Throwable {
+    	    //è·å–å½“å‰çš„æŒ‡å®šçš„æ•°æ®æº;
+    	    String dsId = targetDataSource.value();
+    	    //å¦‚æœä¸åœ¨æˆ‘ä»¬æ³¨å…¥çš„æ‰€æœ‰çš„æ•°æ®æºèŒƒå›´ä¹‹å†…ï¼Œé‚£ä¹ˆè¾“å‡ºè­¦å‘Šä¿¡æ¯ï¼Œç³»ç»Ÿè‡ªåŠ¨ä½¿ç”¨é»˜è®¤çš„æ•°æ®æºã€‚
+    	    if (!DynamicDataSourceContextHolder.containsDataSource(dsId)) {
+    	    	System.err.println("æ•°æ®æº[{}]ä¸å­˜åœ¨,ä½¿ç”¨é»˜è®¤æ•°æ®æº > {}"+targetDataSource.value()+point.getSignature());
+    	    } else {
+    	    	System.out.println("Use DataSource : {} > {}"+targetDataSource.value()+point.getSignature());
+    	    	//æ‰¾åˆ°çš„è¯,é‚£ä¹ˆè®¾ç½®åˆ°åŠ¨æ€æ•°æ®æºä¸Šä¸‹æ–‡ä¸­
+    	    	DynamicDataSourceContextHolder.setDataSourceType(targetDataSource.value());
+    	    }
+    	}
+    	@After("@annotation(targetDataSource)")
+    	public void restoreDataSource(JoinPoint point, TargetDataSource targetDataSource) {
+    	    System.out.println("Revert DataSource : {} > {}"+targetDataSource.value()+point.getSignature());
+    	    //æ–¹æ³•æ‰§è¡Œå®Œæ¯•ä¹‹å,é”€æ¯å½“å‰æ•°æ®æºä¿¡æ¯,è¿›è¡Œåƒåœ¾å›æ”¶
+    	    DynamicDataSourceContextHolder.clearDataSourceType();
+    	}
+    }
+8.å¤šæ•°æ®æºåŠ¨æ€åˆ‡æ¢æµ‹è¯•:
+    [1]åˆ›å»ºæ•°æ®åº“è¡¨åŠæ’å…¥æ•°æ®(mysql5.5,oracle11g)
+    	Mysql:
+    	    DROP TABLE IF EXISTS `student`;
+    	    CREATE TABLE `student` (
+    	        `sno` varchar(3) NOT NULL,
+    	        `sname` varchar(9) NOT NULL,
+    	        `ssex` char(2) NOT NULL,
+    	        `database` varchar(10) DEFAULT NULL
+    	    ) DEFAULT CHARSET=utf8;
+    	    INSERT INTO `student` VALUES ('001', 'åº·åº·', 'M', 'mysql');
+    	    INSERT INTO `student` VALUES ('002', 'éº¦å…‹', 'M', 'mysql');
+    	Oracle:
+    	    DROP TABLE "SCOTT"."STUDENT";
+    	    CREATE TABLE "SCOTT"."STUDENT" (
+    	        "SNO" VARCHAR2(3 BYTE) NOT NULL ,
+    	        "SNAME" VARCHAR2(9 BYTE) NOT NULL ,
+    	        "SSEX" CHAR(2 BYTE) NOT NULL ,
+    	        "database" VARCHAR2(10 BYTE) NULL 
+    	    );
+    	    INSERT INTO "SCOTT"."STUDENT" VALUES ('001', 'KangKang', 'M ', 'oracle');
+    	    INSERT INTO "SCOTT"."STUDENT" VALUES ('002', 'Mike', 'M ', 'oracle');
+    	    INSERT INTO "SCOTT"."STUDENT" VALUES ('003', 'Jane', 'F ', 'oracle');
+    	    INSERT INTO "SCOTT"."STUDENT" VALUES ('004', 'Maria', 'F ', 'oracle');
+    [2]ç¼–å†™Mapperæ¥å£:
+    	@Component
+    	@Mapper
+    	public interface StudentMapper {
+    	    List<Map<String, Object>> getAllStudents();
+    	}
+    [3]ç¼–å†™Mapperçš„å®ç°:
+        // éœ€è¦åœ¨å…¥å£ç±»ä¸Šæ·»åŠ xmlæ–‡ä»¶çš„æ‰«ææ³¨è§£: @MapperScan("com.springboot.dao")
+    	<?xml version="1.0" encoding="UTF-8" ?>
+    	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    	<mapper namespace="com.example.multidatasource.dao.StudentMapper">
+    	    <select id="getAllStudents" resultType="java.util.Map">
+    	    	select * from student
+    	    </select>
+    	</mapper>
+    [4]ç¼–å†™Serviceæ¥å£:
+    	public interface StudentService {
+    	    List<Map<String,Object>> getAllStudentsFromMysql();
+    	    List<Map<String,Object>> getAllStudentsFromOracle();
+    	}
+    [5]ç¼–å†™Serviceçš„å®ç°ç±»:
+    	@Service("studentService")
+    	public class StudentServiceImp implements StudentService {
+    	    @Autowired
+    	    private StudentMapper studentMapper;
+    	    @Override
+    	    @Transactional	//ä¸»æ•°æ®æºçš„äº‹åŠ¡(bug:ä»æ•°æ®æºä¸å¯ä½¿ç”¨è¯¥æ³¨è§£)
+    	    public List<Map<String, Object>> getAllStudentsFromMaster() {
+    	    	return this.studentMapper.getAllStudents();
+    	    }
+    	    @Override
+    	    @TargetDataSource("ds1")
+    	    public List<Map<String, Object>> getAllStudentsFromSlave() {
+    	    	return this.studentMapper.getAllStudents();
+    	    }
+    	}
+    [6]ç¼–å†™Controller:
+    	@RestController
+    	public class DataSourceController {
+    	    @Autowired
+    	    private StudentService studentService;
+    	    @RequestMapping("/querystudentsfromoracle")
+    	    public List<Map<String,Object>> queryStudentsFromOracle(){
+    	    	return this.studentService.getAllStudentsFromSlave();
+    	    }
+    	    @RequestMapping("/querystudentsfrommysql")
+    	    public List<Map<String,Object>> queryStudentsFromMysql(){
+    	    	return this.studentService.getAllStudentsFromMaster();
+    	    }
+    	}
+    [7]æµ‹è¯•MySQLæ•°æ®æº: http://localhost:8080/web/querystudentsfrommysql
+       æµ‹è¯•Oracleæ•°æ®æº: http://localhost:8080/web/querystudentsfromoracle
+```
