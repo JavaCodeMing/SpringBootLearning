@@ -179,7 +179,7 @@
     	    defaultDataSource = buildDataSource(dsMap);
     	}
     	private void initslaveDataSources(Environment env) {
-    	    // 读取配置文件获取更多数据源
+    	    // 读取配置文件获取更多数据源,可根据需要在配置文件中添加多个从数据源
     	    Binder binder = Binder.get(env);
     	    HashMap map = binder.bind("spring.datasource.druid.slave", HashMap.class).get();
     	    for (Object o : map.entrySet()) {
