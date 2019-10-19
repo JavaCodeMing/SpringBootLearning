@@ -7,3 +7,4 @@
 3.[SpringBoot整合MyBatis](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88MyBatis%E5%92%8CDruid.md)   
 4.[SpringBoot整合JdbcTemplate](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88JdbcTemplate.md)   
 5.[SpringBoot配置多数据源(Mysql,Oracle)](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E9%85%8D%E7%BD%AE%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90.md)   
+6.[SpringBoot配置多数据源动态切换(Mysql,Oracle,一主多从)](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E9%85%8D%E7%BD%AE%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E5%8A%A8%E6%80%81%E5%88%87%E6%8D%A2.md)   
