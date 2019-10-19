@@ -1,4 +1,4 @@
-# Spring Boot 整合MyBatis配置Druid多数据源
+# Spring Boot 配置多数据源
 
 ```text
 1.回顾在Spring整合Mybatis时,在Spring的配置文件中配置MyBatis SqlSessionFactory的配置:
