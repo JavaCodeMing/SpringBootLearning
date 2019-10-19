@@ -1,4 +1,4 @@
-# Spring Boot 整合MyBatis
+# Spring Boot 整合MyBatis和Druid
 
 ```text
 1.项目的pom文件中添加MyBatis依赖:
