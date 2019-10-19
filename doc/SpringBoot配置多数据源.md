@@ -139,7 +139,7 @@
 	@MapperScan(basePackages = MysqlDatasourceConfig.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
 	public class MysqlDatasourceConfig {
 		// mysqldao扫描路径
-		static final String PACKAGE = "com.springboot.mysqldao";
+		static final String PACKAGE = "com.example.multidatasource.mysqldao";
 		// mybatis mapper 扫描路径
 		static final String MAPPER_LOCATION = "classpath:mapper/mysql/*.xml";
 		@Primary
@@ -167,7 +167,7 @@
 	@MapperScan(basePackages = OracleDatasourceConfig.PACKAGE,sqlSessionFactoryRef = "oracleSqlSessionFactory")
 	public class OracleDatasourceConfig {
 		// oracledao扫描路径
-		static final String PACKAGE = "com.springboot.oracledao";
+		static final String PACKAGE = "com.example.multidatasource.oracledao";
 		// mybatis mapper扫描路径
 		static final String MAPPER_LOCATION = "classpath:mapper/oracle/*.xml";
 		@Bean(name = "oracledatasource")
@@ -224,11 +224,9 @@
 			INSERT INTO "SCOTT"."STUDENT" VALUES ('003', 'Jane', 'F ', 'oracle');
 			INSERT INTO "SCOTT"."STUDENT" VALUES ('004', 'Maria', 'F ', 'oracle');
 	[2]编写Mapper接口:
-		@Mapper
 		public interface MysqlStudentMapper {
 			List<Map<String, Object>> getAllStudents();
 		}
-		@Mapper
 		public interface OracleStudentMapper {
 			List<Map<String, Object>> getAllStudents();
 		}
@@ -237,7 +235,7 @@
 		    <?xml version="1.0" encoding="UTF-8" ?>
 		    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-		    <mapper namespace="com.springboot.mysqldao.MysqlStudentMapper">
+		    <mapper namespace="com.example.multidatasource.mysqldao.MysqlStudentMapper">
 		    	<select id="getAllStudents" resultType="java.util.Map">
 		    		select * from student
 		    	</select>
@@ -246,7 +244,7 @@
 		    <?xml version="1.0" encoding="UTF-8" ?>
 		    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-		    <mapper namespace="com.springboot.oracledao.OracleStudentMapper">
+		    <mapper namespace="com.example.multidatasource.oracledao.OracleStudentMapper">
 		    	<select id="getAllStudents" resultType="java.util.Map">
 		    		select * from student
 		    	</select>
