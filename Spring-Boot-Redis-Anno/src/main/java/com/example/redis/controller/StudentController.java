@@ -20,6 +20,16 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    @RequestMapping("/add")
+    public String add(Student student){
+        try {
+            studentService.add(student);
+            return "success";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "false";
+    }
     @RequestMapping("/update")
     public String update(Student student){
         try {
