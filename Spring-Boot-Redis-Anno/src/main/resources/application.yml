@@ -88,4 +88,7 @@ mybatis:
 
 logging:
   level:
-    com.springboot.dao: debug
+    com: 
+      example:
+        redis:
+          dao: debug
