@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.dao.UserMapper">
+    <resultMap id="userResultMap" type="com.example.test.bean.User">
+        <id property="id" column="ID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="passwd" column="PASSWD"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="status" column="STATUS"/>
+    </resultMap>
+    <insert id="add">
+	  	insert into t_user (USERNAME,PASSWD,CREATE_TIME,STATUS) values(#{username},#{passwd},#{createTime},#{status})
+	</insert>
+    <update id="update">
+	  	update t_user set USERNAME=#{username},PASSWD=#{passwd},STATUS=#{status} where ID=#{id}
+	</update>
+    <delete id="deleteById">
+	  	delete from t_user where ID=#{id}
+	</delete>
+    <select id="queryUserById" resultMap="userResultMap">
+	  	select * from t_user where ID=#{id}
+	</select>
+</mapper>
+
