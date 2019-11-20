@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * Created by dengzhiming on 2019/4/29
  */
-@Api("用户Controller")
+@Api(tags = "用户Controller")
 @Controller
 @RequestMapping("user")
 public class UserController {
