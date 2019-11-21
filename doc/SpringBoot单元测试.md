@@ -349,9 +349,9 @@
     	    // 测试controller queryuser
     	    mockMvc.perform(MockMvcRequestBuilders.get("/queryuser/1")
     	    	.contentType(MediaType.APPLICATION_JSON_UTF8))
-    	    .andExpect(MockMvcResultMatchers.status().isOk())
-    	    .andExpect(MockMvcResultMatchers.jsonPath("$.username").value("mike"))
-    	    .andDo(MockMvcResultHandlers.print());
+    	    	.andExpect(MockMvcResultMatchers.status().isOk())
+    	    	.andExpect(MockMvcResultMatchers.jsonPath("$.username").value("mike"))
+    	    	.andDo(MockMvcResultHandlers.print());
     	}
     }
 ```
