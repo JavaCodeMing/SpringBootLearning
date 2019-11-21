@@ -1,0 +1,26 @@
+spring:
+  mail:
+    #发送邮件服务器
+    host: smtp.qq.com
+    #QQ邮箱
+    username: xxx@qq.com
+    #授权码参考:https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28
+    password: xxxxxx
+    #发送邮件协议
+    protocol: smtp
+    #编码格式
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          #开启认证
+          auth: true
+          #端口号465(开启SSL时)或587(不开启SSL时)
+          port: 465
+          ssl:
+            #开启SSL(使用587端口时无法连接QQ邮件服务器)
+            enable: true
+        starttls:
+          #需要TLS认证 保证发送邮件安全验证
+          enable: true
+          required: true

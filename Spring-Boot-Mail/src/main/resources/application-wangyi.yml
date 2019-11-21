@@ -1,0 +1,19 @@
+spring:
+  mail:
+    host: smtp.163.com     #发送邮件服务器(smtp.126/163/yeah.com)
+    username: xxx@163.com  #126/163/yeah邮箱
+    #授权码参考:http://help.mail.163.com/faq.do?m=list&categoryID=197
+    password: xxxxxx
+    protocol: smtp
+    default-encoding: utf-8 #编码格式
+    properties:
+      mail:
+        smtp:
+          auth: true       #开启认证
+          port: 994        #465或者994
+          ssl:
+            enable: true   #开启SSL
+        starttls:
+          enable: true     #需要TLS认证 保证发送邮件安全验证
+          required: true
+
