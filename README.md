@@ -14,3 +14,4 @@
 10.[SpringBoot整合缓存框架注解版(Redis,Ehcache)](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88%E7%BC%93%E5%AD%98%E6%A1%86%E6%9E%B6(%E6%B3%A8%E8%A7%A3%E7%89%88).md)   
 11.[SpringBoot单元测试](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95.md)   
 12.[SpringBoot整合Swagger2构建RESTfulAPI](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Swagger2%E6%9E%84%E5%BB%BARESTfulAPI.md)   
+13.[SpringBoot整合Actuator监控应用](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Actuator%E7%9B%91%E6%8E%A7%E5%BA%94%E7%94%A8.md)   
