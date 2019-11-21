@@ -11,4 +11,6 @@
 7.[SpringBoot使用AOP记录用户请求日志](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBootAOP%E8%AE%B0%E5%BD%95%E7%94%A8%E6%88%B7%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97.md)   
 8.[SpringBoot整合模板引擎Thymeleaf](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8EThymeleaf.md)   
 9.[SpringBoot整合JackSon](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88JackSon.md)   
-10.[SpringBoot整合缓存框架注解版(Redis,Ehcache)](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88%E7%BC%93%E5%AD%98%E6%A1%86%E6%9E%B6(%E6%B3%A8%E8%A7%A3%E7%89%88).md)
+10.[SpringBoot整合缓存框架注解版(Redis,Ehcache)](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88%E7%BC%93%E5%AD%98%E6%A1%86%E6%9E%B6(%E6%B3%A8%E8%A7%A3%E7%89%88).md)   
+11.[SpringBoot单元测试](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95.md)   
+12.[SpringBoot整合Swagger2构建RESTfulAPI](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Swagger2%E6%9E%84%E5%BB%BARESTfulAPI.md)   
