@@ -5,12 +5,12 @@ REST实际上为Representational State Transfer的缩写,翻译为“表现层�
 状态转换为通过HTTP协议(包含了一些操作资源的方法,如:GET 用来获取资源,POST用来新建资源,PUT用来更新资源,
 DELETE用来删除资源,PATCH用来更新资源的部分属性)的方法来操作资源的过程;
 1.传统URL请求和RESTful风格请求的区别: (RESTful只是一种风格,并不是一种强制性的标准)
-	描述	    传统请求		    方法	       RESTful请求	    方法
-	查询    /user/query?name=mrbird 		GET	     /user?name=mrbird	    GET
-	详情	/user/getInfo?id=1	        GET	     /user/1	            GET
-	创建    /user/create?name=mrbird	    	POST	     /user	            POST
-	修改   /user/update?name=mrbird&id=1	POST	     /user/1	            PUT
-	删除	/user/delete?id=1	        GET	     /user/1	            DELETE
+	描述          传统请求                    方法          RESTful请求           方法
+	查询     /user/query?name=mrbird          GET          /user?name=mrbird      GET
+	详情       /user/getInfo?id=1             GET          /user/1                GET
+	创建     /user/create?name=mrbird         POST         /user                  POST
+	修改     /user/update?name=mrbird&id=1    POST         /user/1                PUT
+	删除     /user/delete?id=1                GET          /user/1                DELETE
 	(传统请求通过URL来描述行为,如create,delete等;RESTful请求通过URL来描述资源;)
 	(RESTful请求通过HTTP请求的方法来描述行为,比如DELETE,POST,PUT等,并且使用HTTP状态码来表示不同的结果)
 	(RESTful请求通过JSON来交换数据)
