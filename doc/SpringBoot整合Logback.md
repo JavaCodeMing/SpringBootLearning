@@ -7,8 +7,8 @@ Logback是log4j框架的作者开发的新一代日志框架,它效率更高、�
     [1]现有的日志框架: JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j…
         日志门面(日志的抽象层)                        日志的实现
         SLF4j(Simple Logging Facade for Java)         Log4j   Logback
-        JCL(Jakarta Commons Logging)                JUL(java.util.logging)
-        jboss-logging                                Log4j2
+        JCL(Jakarta Commons Logging)                  JUL(java.util.logging)
+        jboss-logging                                 Log4j2
         (在实际工作中用的话,就需要左边选一个门面(抽象层),右边来选一个实现;)
         (SLF4j/Logback/Log4j是同一个人写的,LogBack是log4j的升级版;Log4j2是apache公司的)
 2.添加日志依赖:
@@ -48,9 +48,9 @@ Logback是log4j框架的作者开发的新一代日志框架,它效率更高、�
     [1]日志配置文件名:
         (1)根据不同的日志系统,能被正确加载的默认配置文件名:
             Logback: logback-spring.xml, logback-spring.groovy, logback.xml, logback.groovy
-            Log4j:      log4j-spring.properties, log4j-spring.xml, log4j.properties, log4j.xml
+            Log4j:   log4j-spring.properties, log4j-spring.xml, log4j.properties, log4j.xml
             Log4j2:  log4j2-spring.xml, log4j2.xml
-            JUL:      logging.properties
+            JUL:     logging.properties
             (SpringBoot官方推荐优先使用带有"-spring"的文件名作为日志配置,其会添加一些springboot特有的配置项)
        (2)自定义日志配置文件名: 在application.properties中,通过logging.config属性指定日志配置文件名
             (如: logging.config=classpath:logging-config.xml)
