@@ -16,4 +16,5 @@
 12.[SpringBoot整合Swagger2构建RESTfulAPI](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Swagger2%E6%9E%84%E5%BB%BARESTfulAPI.md)   
 13.[SpringBoot整合Actuator监控应用](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Actuator%E7%9B%91%E6%8E%A7%E5%BA%94%E7%94%A8.md)   
 14.[SpringBoot整合Mail发送邮件](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Mail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6.md)   
-15.[SpringBoot整合Admin监控服务](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Admin%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1.md)
+15.[SpringBoot整合Admin监控服务](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Admin%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1.md)   
+16.[SpringBoot整合Devtools热部署](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Devtools%E7%83%AD%E9%83%A8%E7%BD%B2.md)
