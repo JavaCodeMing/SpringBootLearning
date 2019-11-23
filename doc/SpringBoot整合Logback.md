@@ -324,7 +324,7 @@ Logback是log4j框架的作者开发的新一代日志框架,它效率更高、�
         </configuration>
     [3]编写测试Controller:
         @Controller
-        public class LearnController {
+        public class TestController {
             private Logger logger = LoggerFactory.getLogger(this.getClass());
             @PostMapping("/login")
             @ResponseBody
