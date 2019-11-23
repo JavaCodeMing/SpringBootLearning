@@ -19,5 +19,5 @@
 15.[SpringBoot整合Admin监控服务](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Admin%E7%9B%91%E6%8E%A7%E6%9C%8D%E5%8A%A1.md)   
 16.[SpringBoot整合Devtools热部署](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Devtools%E7%83%AD%E9%83%A8%E7%BD%B2.md)   
 17.[SpringBoot整合Logback](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Logback.md)   
-18.[SpringBoot项目打包部署Linux](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E9%83%A8%E7%BD%B2.md)   
+18.[SpringBoot项目打包部署到Linux](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E9%83%A8%E7%BD%B2.md)   
 
