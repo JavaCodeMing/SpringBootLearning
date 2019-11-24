@@ -20,4 +20,5 @@
 16.[SpringBoot整合Devtools热部署](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Devtools%E7%83%AD%E9%83%A8%E7%BD%B2.md)   
 17.[SpringBoot整合Logback](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Logback.md)   
 18.[SpringBoot项目打包部署到Linux](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E9%83%A8%E7%BD%B2.md)   
-19.[SpringBoot使用Jsoup防御XSS攻击](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%BD%BF%E7%94%A8Jsoup%E9%98%B2%E5%BE%A1XSS%E6%94%BB%E5%87%BB.md)
+19.[SpringBoot使用Jsoup防御XSS攻击](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%BD%BF%E7%94%A8Jsoup%E9%98%B2%E5%BE%A1XSS%E6%94%BB%E5%87%BB.md)   
+20.[SpringBoot统一异常处理之ErrorHandler](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E4%B9%8BErrorHandler.md)
