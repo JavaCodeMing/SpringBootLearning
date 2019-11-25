@@ -25,6 +25,20 @@ public class SpringBootMapperPageHelperApplicationTests {
     }
 
     @Test
+    public void testJavaGenerator() {
+        /*List<String> warmings = new ArrayList<>();
+        boolean overwrite = true;
+        ConfigurationParser cp = new ConfigurationParser(warmings);
+        Configuration config = cp.parseConfiguration(getResourceAsStream("generatorConfig.xml"));
+        DefaultShellCallback dsc = new DefaultShellCallback(overwrite);
+        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,dsc,warmings);
+        myBatisGenerator.generate(null);
+        for (String warming : warmings) {
+            System.out.println(warming);
+        }*/
+    }
+
+    @Test
     public void testInsert() {
         User user = new User();
         user.setUsername("mike");
