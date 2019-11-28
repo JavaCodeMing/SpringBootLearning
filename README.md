@@ -23,4 +23,6 @@
 19.[SpringBoot使用Jsoup防御XSS攻击](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%BD%BF%E7%94%A8Jsoup%E9%98%B2%E5%BE%A1XSS%E6%94%BB%E5%87%BB.md)   
 20.[SpringBoot统一异常处理之ErrorHandler](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E4%B9%8BErrorHandler.md)   
 21.[SpringBoot统一异常处理之ErrorController](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E4%B9%8BErrorController.md)   
-22.[SpringBoot中配置过滤器监听器和拦截器](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%B8%AD%E9%85%8D%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8.md)
+22.[SpringBoot中配置过滤器监听器和拦截器](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%B8%AD%E9%85%8D%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9B%91%E5%90%AC%E5%99%A8%E5%92%8C%E6%8B%A6%E6%88%AA%E5%99%A8.md)   
+23.[SpringBoot整合通用Mapper和PageHelper](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88%E9%80%9A%E7%94%A8Mapper%E5%92%8CPageHelper.md)   
+
