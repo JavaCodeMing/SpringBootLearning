@@ -28,4 +28,5 @@
 24.[SpringBoot整合Mybatis-Plus](https://github.com/JavaCodeMing/SpringBootLearning/edit/master/doc/SpringBoot%E6%95%B4%E5%90%88Mybatis-Plus.md)   
 25.[SpringBoot整合Hibernate-Validator进行参数校验](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Hibernate-Validator.md)   
 26.[SpringBoot中处理跨域问题](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%B8%AD%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98.md)   
+27.[SpringBoot中实现异步调用](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8.md)   
 
