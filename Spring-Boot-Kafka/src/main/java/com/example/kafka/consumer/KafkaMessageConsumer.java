@@ -1,4 +1,4 @@
-package com.example.kafka.listener;
+package com.example.kafka.consumer;
 
 import com.example.kafka.entity.Message;
 import org.slf4j.Logger;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * Created by dengzhiming on 2019/7/3
  */
 @Component
-public class KafkaMessageListener {
+public class KafkaMessageConsumer {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /*@KafkaListener(topics = "test",groupId = "test-consumer")
