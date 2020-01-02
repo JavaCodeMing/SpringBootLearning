@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Spring-Boot-WebService.iml" filepath="$PROJECT_DIR$/.idea/Spring-Boot-WebService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebService-Client/WebService-Client.iml" filepath="$PROJECT_DIR$/WebService-Client/WebService-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebService-Server/webservice-server.iml" filepath="$PROJECT_DIR$/WebService-Server/webservice-server.iml" />
+    </modules>
+  </component>
+</project>
