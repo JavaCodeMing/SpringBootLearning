@@ -41,12 +41,10 @@ public class ListenerConfig {
 
     @Bean("jasonTemplate")
     public RabbitTemplate jasonRabbitTemplate(ConnectionFactory connectionFactory) {
-        Jackson2JsonMessageConverter messageConverter =
-                new Jackson2JsonMessageConverter();
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
         rabbitTemplate.setConnectionFactory(connectionFactory);
-        //设置转化类
-        rabbitTemplate.setMessageConverter(messageConverter);
+        //设置消息发送时的消息转化类
+        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         return rabbitTemplate;
     }
 
@@ -54,6 +52,7 @@ public class ListenerConfig {
     public RabbitListenerContainerFactory jsonListenerFactory(ConnectionFactory connectionFactory){
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
+        //设置消费者接收时的消息转化类
         factory.setMessageConverter(new Jackson2JsonMessageConverter());
         return factory;
     }
