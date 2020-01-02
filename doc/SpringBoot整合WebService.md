@@ -188,10 +188,10 @@
                         for (int count = 0; count < nl.getLength(); count++) {
                             Node n = nl.item(count);
                             if(n.getFirstChild().getNodeValue().equals("查询结果为空！")) {
-                                sb = new StringBuffer("#");
+                                sb = new StringBuffer(" ");
                                 break ;
                             }
-                            sb.append(n.getFirstChild().getNodeValue()).append("#");
+                            sb.append(n.getFirstChild().getNodeValue()).append(" \t");
                         }
                         is.close();
                         return sb.toString();
