@@ -1,3 +1,4 @@
+```
 1.安装: (windows)
     [1]安装Erlang:
         (1)下载: http://www.erlang.org/downloads
@@ -525,3 +526,4 @@
                         System.out.println(now.format(dateTimeFormatter) +" 延迟队列之消费消息：" + user.toString() );
                     }
                 }
+```
