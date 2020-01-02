@@ -53,7 +53,7 @@
         }
     [4]编写服务端提供服务的接口实现类:
         // serviceName: 对外发布的服务名; 
-		// targetNamespace: 指定名称空间,一般使用接口实现类的包名的反缀
+	// targetNamespace: 指定名称空间,一般使用接口实现类的包名的反缀
         // endpointInterface:服务接口的全类名
         @WebService(serviceName = "DemoService"
                 ,targetNamespace = "http://impl.service.server.example.com"
@@ -96,9 +96,9 @@
         public class TestController {
             @GetMapping("/test")
             public void test() throws Exception {
-                //创建动态客户端
+                // 创建动态客户端
                 JaxWsDynamicClientFactory factory = JaxWsDynamicClientFactory.newInstance();
-				// 根据服务端的配置拼接而得
+		// 根据服务端的配置拼接而得
                 Client client = factory.createClient("http://localhost:8080/demo/api?wsdl");
                 // 需要密码的情况需要加上用户名和密码
                 // client.getOutInterceptors().add(new ClientLoginInterceptor(USER_NAME,PASS_WORD));
@@ -132,6 +132,7 @@
                     System.out.println(weatherInfo);
                 }
                 // 从接口文档中获取SOAP的请求头,并替换其中的标志符号为用户输入的城市
+		// (http://ws.webxml.com.cn/WebServices/WeatherWebService.asmx?op=getWeatherbyCityName)
                 private static String getSoapRequest(String city) {
                     StringBuilder sb = new StringBuilder();
                     sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
