@@ -191,7 +191,7 @@
                                 sb = new StringBuffer(" ");
                                 break ;
                             }
-                            sb.append(n.getFirstChild().getNodeValue()).append(" \t");
+                            sb.append(n.getFirstChild().getNodeValue()).append(" \n");
                         }
                         is.close();
                         return sb.toString();
