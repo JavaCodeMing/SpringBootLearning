@@ -1,0 +1,318 @@
+1.主配置:
+    [1]org.quartz.scheduler.instanceName:
+        (1)作用:当同一程序中使用多个实例时,它用作客户端代码区分调度程序的机制;使用群集功能,则必须对群集中"逻辑上"为同一个调度程序的每个实例使用相同的名称;
+        (2)必要性: 无
+        (3)默认值: QuartzScheduler
+    [2]org.quartz.scheduler.instanceId:
+        (1)作用:对于所有工作的调度程序来说必须是唯一的;若ID将被生成,则将值"AUTO"用作instanceId,若该值来自系统属性"org.quartz.scheduler.instanceId",则为"SYS_PROP"
+        (2)必要性: 无
+        (3)默认值: NON_CLUSTERED
+    [3]org.quartz.scheduler.instanceIdGenerator.class:
+        (1)作用:仅当instanceId为"AUTO"时,默认为"org.quartz.simpl.SimpleInstanceIdGenerator"
+        (2)必要性: 无
+        (3)默认值: org.quartz.simpl.SimpleInstanceIdGenerator
+    [4]org.quartz.scheduler.threadName:
+        (1)作用:调度的线程名
+        (2)必要性: 无
+        (3)默认值: instanceName + "_QuartzSchedulerThread"
+    [5]org.quartz.scheduler.makeSchedulerThreadDaemon:
+        (1)作用:指定调度程序的主线程是否应该是守护程序线程
+        (2)必要性: 无
+        (3)默认值: false
+    [6]org.quartz.scheduler.threadsInheritContextClassLoaderOfInitializer:
+        (1)作用:指定Quartz产生的线程是否将继承初始化线程(用于初始化Quartz实例的线程)的上下文ClassLoader
+        (2)必要性: 无
+        (3)默认值: false (设置为"true"可能有助于类加载)
+    [7]org.quartz.scheduler.idleWaitTime:
+        (1)作用:当调度程序空闲时在重新查询可用触发器之前调度程序将等待的时间(以毫秒为单位)
+        (2)必要性: 无
+        (3)默认值: 30000 (不建议使用小于5000毫秒的值,小于1000的值不合法)
+    [8]org.quartz.scheduler.dbFailureRetryInterval:
+        (1)作用:调度程序在检测到JobStore(如,与数据库的)连接断开时再重试之间等待的时间(以毫秒为单位),使用RamJobStore时该参数无太大意义
+        (2)必要性: 无
+        (3)默认值: 15000
+    [9]org.quartz.scheduler.classLoadHelper.class:
+        (1)作用:
+        (2)必要性: 无
+        (3)默认值: org.quartz.simpl.CascadingClassLoadHelper
+    [10]org.quartz.scheduler.jobFactory.class:
+        (1)作用:要使用的JobFactory的类名
+        (2)必要性: 无
+        (3)默认值: org.quartz.simpl.PropertySettingJobFactory
+    [11]org.quartz.context.key.SOME_KEY:
+        (1)作用:将以字符串形式放置在"调度程序上下文"中的名称/值对
+        (2)必要性: 无
+        (3)默认值: 无 (设置"org.quartz.context.key.MyKey = MyValue"将执行scheduler.getContext().put("MyKey","MyValue")的等效操作)
+    [12]org.quartz.scheduler.userTransactionURL:
+        (1)作用:UserTransaction管理器的JNDI URL
+        (2)必要性: 无
+        (3)默认值: java:comp / UserTransaction
+    [13]org.quartz.scheduler.wrapJobExecutionInUserTransaction:
+        (1)作用:是否在调用对您的作业执行execute之前启动UserTransaction
+        (2)必要性: 无
+        (3)默认值: false
+    [14]org.quartz.scheduler.skipUpdateCheck:
+        (1)作用:是否跳过运行快速Web请求以确定是否有可供下载的Quartz更新版本
+        (2)必要性: 无
+        (3)默认值: false
+    [15]org.quartz.scheduler.batchTriggerAcquisitionMaxCount:
+        (1)作用:允许调度程序节点一次获取(触发)的最大触发器数
+        (2)必要性: 无
+        (3)默认值: 1 (数字越大,触发效率越高;若值设置为>1,且使用JDBC JobStore,则必须将属性"org.quartz.jobStore.acquireTriggersWithinLock"设置为"true"以避免数据损坏)
+    [16]org.quartz.scheduler.batchTriggerAcquisitionFireAheadTimeWindow
+        (1)作用:允许触发器被捕获并在其计划的触发时间之前触发的时间(以毫秒为单位)
+        (2)必要性: 无
+        (3)默认值: 0 (数字越大,触发触发器的批量采集越有可能一次选择并触发1个以上的触发器)
+2.ThreadPool设置:
+    [1]org.quartz.threadPool.class:
+        (1)作用:ThreadPool实现的名称
+        (2)必要性: 是
+        (3)默认值: 空值 (Quartz附带的线程池是"org.quartz.simpl.SimpleThreadPool")
+    [2]org.quartz.threadPool.threadCount:
+        (1)作用:可用于并发执行作业的线程数
+        (2)必要性: 是
+        (3)默认值: -1 (只有1到100之间的数字是非常实用的)
+    [3]org.quartz.threadPool.threadPriority:
+        (1)作用:线程的优先级
+        (2)必要性: 无
+        (3)默认值: Thread.NORM_PRIORITY(为5) (Thread.MIN_PRIORITY(为1)和Thread.MAX_PRIORITY(为10)之间的任何整数)
+3.SimpleThreadPool特定的属性配置:
+    [1]org.quartz.threadPool.makeThreadsDaemons:
+        (1)作用:将池中的线程创建为守护程序线程
+        (2)必要性: 无
+        (3)默认值: false
+    [2]org.quartz.threadPool.threadsInheritGroupOfInitializingThread:
+        (1)作用:是否继承初始化线程的组
+        (2)必要性: 无
+        (3)默认值: true
+    [3]org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread:
+        (1)作用:是否继承初始化线程的上下文加载器类
+        (2)必要性: 无
+        (3)默认值: false
+    [4]org.quartz.threadPool.threadNamePrefix:
+        (1)作用:工作池中线程名称的前缀
+        (2)必要性: 无
+        (3)默认值: [计划者名称] _Worker
+4.RMI设置:
+    [1]org.quartz.scheduler.rmi.export:
+        (1)作用:是否让Quartz Scheduler通过RMI作为服务器导出自身
+        (2)必要性: 无
+        (3)默认值: false
+    [2]org.quartz.scheduler.rmi.registryHost:
+        (1)作用:RMI注册表的主机("localhost")
+        (2)必要性: 无
+        (3)默认值: localhost
+    [3]org.quartz.scheduler.rmi.registryPort:
+        (1)作用:RMI注册表正在侦听的端口(通常为1099)
+        (2)必要性: 无
+        (3)默认值: 1099
+    [4]org.quartz.scheduler.rmi.createRegistry:
+        (1)作用:是否希望Quartz创建注册表
+        (2)必要性: 无
+        (3)默认值: never
+    [5]org.quartz.scheduler.rmi.serverPort:
+        (1)作用:Quartz Scheduler服务绑定并侦听连接的端口
+        (2)必要性: 无
+        (3)默认值:  (由于调度程序绑定到RMI注册表,RMI服务将"随机"选择端口)
+    [6]org.quartz.scheduler.rmi.proxy:
+        (1)作用:连接(使用)远程服务的调度程序(若设置还必须为RMI Registry进程指定主机和端口-通常是"localhost"端口1099)
+        (2)必要性: 无
+        (3)默认值: false
+5.RAMJobStore配置: (RAMJobStore用于在内存中存储调度信息(作业,触发器和日历))
+    [1]org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore
+        (1)作用:将调度程序的JobStore设置为RAMJobStore
+    [2]org.quartz.jobStore.misfireThreshold:
+        (1)作用:调度程序在被认为是"misfired"之前将"容忍"触发器到下一次触发时间的毫秒数
+        (2)必要性: 无
+        (3)默认值: 60000
+6.JDBC-JobStoreTX配置: (JDBCJobStore用于在关系数据库中存储调度信息(作业,触发器和日历))
+    [1]org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreTX
+        (1)将计划程序的JobStore设置为JobStoreTX
+    [2]org.quartz.jobStore.driverDelegateClass:
+        (1)作用:各种数据库系统的特定"方言"
+        (2)必要性: 是
+        (3)默认值: (org.quartz.impl.jdbcjobstore.StdJDBCDelegate(用于完全兼容JDBC的驱动程序))
+    [3]org.quartz.jobStore.dataSource:
+        (1)作用:值必须是配置属性文件中定义的数据源之一的名称
+        (2)必要性: 是
+        (3)默认值:
+    [4]org.quartz.jobStore.tablePrefix:
+        (1)作用:在数据库中创建的Quartz表的前缀
+        (2)必要性: 无
+        (3)默认值: QRTZ_
+    [5]org.quartz.jobStore.useProperties:
+        (1)作用:是否指示JDBCJobStore JobDataMaps中的所有值都是字符串
+        (2)必要性: 无
+        (3)默认值: false
+    [6]org.quartz.jobStore.misfireThreshold:
+        (1)作用:调度程序在被认为是"误触发"之前将"容忍"触发器经过下一次触发时间的毫秒数
+        (2)必要性: 无
+        (3)默认值: 60000
+    [7]org.quartz.jobStore.isClustered:
+        (1)作用:是否打开群集功能(有多个Quartz实例使用同一组数据库表,则必须将此属性设置为"true")
+        (2)必要性: 无
+        (3)默认值: false
+    [8]org.quartz.jobStore.clusterCheckinInterval:
+        (1)作用:设置此实例与其他群集实例"签入" *的频率(以毫秒为单位)
+        (2)必要性: 无
+        (3)默认值: 15000
+    [9]org.quartz.jobStore.maxMisfiresToHandleAtATime:
+        (1)作用:作业存储将在给定通道中处理的未触发触发器的最大数量
+        (2)必要性: 无
+        (3)默认值: 20
+    [10]org.quartz.jobStore.dontSetAutoCommitFalse:
+        (1)作用:Quartz是否在从DataSource获得的连接上调用setAutoCommit(false)
+        (2)必要性: 无
+        (3)默认值: false
+    [11]org.quartz.jobStore.selectWithLockSQL:
+        (1)作用:必须是在"LOCKS"表中选择一行并在该行上放置锁的SQL字符串
+        (2)必要性: 无
+        (3)默认值: SELECT * FROM {0} SCHED_NAME = {1}且LOCK_NAME = ? FOR UPDATE
+            ("{0}"将替换为上面配置的TABLE_PREFIX;"{1}"将替换为调度程序的名称)
+    [12]org.quartz.jobStore.txIsolationLevelSerializable:
+        (1)作用:Quartz(使用JobStoreTX或CMT时)是否在JDBC连接上调用setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE)
+        (2)必要性: 无
+        (3)默认值: false (true时有助于防止某些数据库在高负载下锁定超时以及"持久"事务)
+    [13]org.quartz.jobStore.acquireTriggersWithinLock:
+        (1)作用:是否获取下一个触发触发器应在显式数据库锁内进行
+        (2)必要性: 无
+        (3)默认值: true
+    [14]org.quartz.jobStore.lockHandler.class:
+        (1)作用:用于生成org.quartz.impl.jdbcjobstore.Semaphore实例的类名称
+        (2)必要性: 无
+        (3)默认值:
+    [15]org.quartz.jobStore.driverDelegateInitString:
+        (1)作用:管道分隔的属性(及其值)列表,可在初始化期间传递给DriverDelegate
+        (2)必要性: 无
+        (3)默认值: ("settingName =设置值| otherSettingName = otherSettingValue | ...")
+7.JDBC-JobStoreCMT配置: (JDBCJobStore用于在关系数据库中存储调度信息(作业,触发器和日历))
+    [1]org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreCMT
+        (1)作用:将调度程序的JobStore设置为JobStoreCMT
+    [2]org.quartz.jobStore.driverDelegateClass:
+        (1)作用:各种数据库系统的特定"方言"
+        (2)必要性: 是
+        (3)默认值: (org.quartz.impl.jdbcjobstore.StdJDBCDelegate(用于完全兼容JDBC的驱动程序))
+    [3]org.quartz.jobStore.dataSource:
+        (1)作用:值必须是配置属性文件中定义的数据源之一的名称
+        (2)必要性: 是
+        (3)默认值:
+    [4]org.quartz.jobStore.nonManagedTXDataSource:
+        (1)作用:JobStoreCMT 需要一个(第二个)数据源,该数据源包含的连接将不属于容器管理的事务
+        (2)必要性: 是
+        (3)默认值:
+    [5]org.quartz.jobStore.tablePrefix:
+        (1)作用:在数据库中创建的Quartz表的前缀
+        (2)必要性: 无
+        (3)默认值: QRTZ_
+    [6]org.quartz.jobStore.useProperties:
+        (1)作用:是否指示JDBCJobStore JobDataMaps中的所有值都是字符串
+        (2)必要性: 无
+        (3)默认值: false
+    [7]org.quartz.jobStore.misfireThreshold:
+        (1)作用:调度程序在被认为是"误触发"之前将"容忍"触发器经过下一次触发时间的毫秒数
+        (2)必要性: 无
+        (3)默认值: 60000
+    [8]org.quartz.jobStore.isClustered:
+        (1)作用:是否打开群集功能(有多个Quartz实例使用同一组数据库表,则必须将此属性设置为"true")
+        (2)必要性: 无
+        (3)默认值: false
+    [9]org.quartz.jobStore.clusterCheckinInterval:
+        (1)作用:设置此实例与其他群集实例"签入" *的频率(以毫秒为单位)
+        (2)必要性: 无
+        (3)默认值: 15000
+    [10]org.quartz.jobStore.maxMisfiresToHandleAtATime:
+        (1)作用:作业存储将在给定通道中处理的未触发触发器的最大数量
+        (2)必要性: 无
+        (3)默认值: 20
+    [11]org.quartz.jobStore.dontSetAutoCommitFalse:
+        (1)作用:Quartz是否在从DataSource获得的连接上调用setAutoCommit(false)
+        (2)必要性: 无
+        (3)默认值: false
+    [12]org.quartz.jobStore.dontSetNonManagedTXConnectionAutoCommitFalse:
+        (1)作用:Quartz是否在从DataSource获得的连接上调用setAutoCommit(false)
+        (2)必要性: 无
+        (3)默认值: false
+    [13]org.quartz.jobStore.selectWithLockSQL:
+        (1)作用:必须是在"LOCKS"表中选择一行并在该行上放置锁的SQL字符串
+        (2)必要性: 无
+        (3)默认值: SELECT * FROM {0} SCHED_NAME = {1}且LOCK_NAME = ? FOR UPDATE
+            ("{0}"将替换为上面配置的TABLE_PREFIX;"{1}"将替换为调度程序的名称)
+    [14]org.quartz.jobStore.txIsolationLevelSerializable:
+        (1)作用:Quartz(使用JobStoreTX或CMT时)是否在JDBC连接上调用setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE)
+        (2)必要性: 无
+        (3)默认值: false
+    [15]org.quartz.jobStore.txIsolationLevelReadCommitted:
+        (1)作用: Quartz是否在非托管JDBC连接上调用setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED)
+        (2)必要性: 无
+        (3)默认值: false
+    [16]org.quartz.jobStore.acquireTriggersWithinLock:
+        (1)作用:是否获取下一个触发触发器应在显式数据库锁内进行
+        (2)必要性: 无
+        (3)默认值: true
+    [17]org.quartz.jobStore.lockHandler.class:
+        (1)作用:用于生成org.quartz.impl.jdbcjobstore.Semaphore实例的类名称
+        (2)必要性: 无
+        (3)默认值:
+    [18]org.quartz.jobStore.driverDelegateInitString:
+        (1)作用:管道分隔的属性(及其值)列表,可在初始化期间传递给DriverDelegate
+        (2)必要性: 无
+        (3)默认值: ("settingName =设置值| otherSettingName = otherSettingValue | ...")
+8.数据源配置: (使用的是JDBC-Jobstore,则需要一个数据源供其使用(如果使用JobStoreCMT,则需要两个数据源))
+  Quartz创建的数据源使用以下属性定义:
+    [1]org.quartz.dataSource.NAME.driver:
+        (1)作用:数据库的JDBC驱动程序的Java类名称
+        (2)必要性: 是
+        (3)默认值:
+    [2]org.quartz.dataSource.NAME.URL:
+        (1)作用:用于连接数据库的连接URL(主机,端口等)
+        (2)必要性: 是
+        (3)默认值:
+    [3]org.quartz.dataSource.NAME.user:
+        (1)作用:连接到数据库时要使用的用户名
+        (2)必要性: 无
+        (3)默认值:
+    [4]org.quartz.dataSource.NAME.password:
+        (1)作用:连接到数据库时使用的密码
+        (2)必要性: 无
+        (3)默认值:
+    [5]org.quartz.dataSource.NAME.maxConnections:
+        (1)作用:数据源可以在其连接池中创建的最大连接数
+        (2)必要性: 无
+        (3)默认值: 10
+    [6]org.quartz.dataSource.NAME.validationQuery:
+        (1)作用:是可选的SQL查询字符串,DataSource可以使用它来检测和替换失败/损坏的连接
+        (2)必要性: 无
+        (3)默认值:
+    [7]org.quartz.dataSource.NAME.idleConnectionValidationSeconds:
+        (1)作用:空闲连接测试之间的秒数-仅在设置了验证查询属性后才启用
+        (2)必要性: 无
+        (3)默认值: 50
+    [8]org.quartz.dataSource.NAME.validateOnCheckout:
+        (1)作用:每次从池中检索连接以确保其仍然有效时,是否应该执行数据库sql查询以验证连接
+        (2)必要性: 无
+        (3)默认值: false
+    [9]org.quartz.dataSource.NAME.discardIdleConnectionsSeconds:
+        (1)作用:闲置多少秒后,丢弃连接
+        (2)必要性: 无
+        (3)默认值: 0(禁用)
+  应用程序服务器数据源使用以下属性定义:
+    [1]org.quartz.dataSource.NAME.jndiURL:
+        (1)作用:应用程序服务器管理的数据源的JNDI URL
+        (2)必要性: 是
+        (3)默认值: 0(禁用)
+    [2]org.quartz.dataSource.NAME.java.naming.factory.initial:
+        (1)作用:使用的JNDI InitialContextFactory的(可选)类名称
+        (2)必要性: 无
+        (3)默认值:
+    [3]org.quartz.dataSource.NAME.java.naming.provider.url:
+        (1)作用:用于连接到JNDI上下文的(可选)URL
+        (2)必要性: 无
+        (3)默认值:
+    [4]org.quartz.dataSource.NAME.java.naming.security.principal:
+        (1)作用:用于连接到JNDI上下文的(可选)用户主体
+        (2)必要性: 无
+        (3)默认值:
+    [5]org.quartz.dataSource.NAME.java.naming.security.credentials:
+        (1)作用:用于连接到JNDI上下文的(可选)用户凭证
+        (2)必要性: 无
+        (3)默认值:

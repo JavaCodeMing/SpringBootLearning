@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.quartz.dao.JobAndTriggerMapper">
+    <select id="getTriggerAndDetails" resultType="com.example.quartz.entity.JobAndTrigger">
+        SELECT DISTINCT
+          T1.JOB_NAME         AS "jobName"
+          ,T1.JOB_GROUP       AS "jobGroup"
+          ,T1.JOB_CLASS_NAME  AS "jobClassName"
+          ,T2.TRIGGER_NAME    AS "triggerName"
+          ,T2.TRIGGER_GROUP   AS "triggerGroup"
+          ,T3.CRON_EXPRESSION AS "cronExpression"
+          ,T3.TIME_ZONE_ID    AS "timeZoneId"
+          ,FROM_UNIXTIME(T2.START_TIME/1000)      AS "startTime"
+          ,T4.REPEAT_COUNT    AS "repeatCount"
+          ,T4.REPEAT_INTERVAL AS "repeatInterval"
+        FROM QRTZ_JOB_DETAILS T1
+        INNER JOIN QRTZ_TRIGGERS T2
+        ON T1.JOB_GROUP= T2.TRIGGER_GROUP
+        AND T1.JOB_NAME = T2.JOB_NAME
+        LEFT JOIN QRTZ_CRON_TRIGGERS T3
+        ON T2.TRIGGER_NAME = T3.TRIGGER_NAME
+        AND T2.TRIGGER_GROUP = T3.TRIGGER_GROUP
+        LEFT JOIN QRTZ_SIMPLE_TRIGGERS T4
+        ON T2.TRIGGER_NAME = T4.TRIGGER_NAME
+        AND T2.TRIGGER_GROUP = T4.TRIGGER_GROUP
+    </select>
+</mapper>
