@@ -1,0 +1,376 @@
+h1. 用户信息API文档
+
+
+h2. 概览 {anchor:overview}
+这里除了查看接口功能外，还提供了调试测试功能
+
+
+h3. 版本信息
+_版本_ : 1.0
+
+
+h3. 联系方式
+_名字_ : 倾尽天下\\ 
+_邮箱_ : 1206291365@qq.com
+
+
+h3. URI scheme
+_域名_ : 127.0.0.1:8080\\ 
+_基础路径_ : /
+
+
+h3. 标签
+
+* UserApi : 用户基本信息操作API
+
+
+
+
+h2. 资源 {anchor:paths}
+
+h3. UserApi {anchor:userapi_resource}
+用户基本信息操作API
+
+
+h4. 删除用户 {anchor:deleteuserusingpost}
+{noformat}
+POST /user/deleteUser
+{noformat}
+
+
+h5. 说明
+id必传
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*id*\\ \\ _必填_||用户id||integer (int64)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}application/json{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/user/deleteUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h4. 获取所有用户 {anchor:getallusingget}
+{noformat}
+GET /user/getAllUser
+{noformat}
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||< [User|#user] > array|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}application/json{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/user/getAllUser
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+[ {
+  "address" : "string",
+  "age" : 0,
+  "id" : 0,
+  "name" : "string",
+  "sex" : "string"
+} ]
+{code}
+
+
+h4. 根据id获取用户 {anchor:getoneusingget}
+{noformat}
+GET /user/getUserById
+{noformat}
+
+
+h5. 说明
+id必传
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*id*\\ \\ _必填_||用户id||integer (int64)|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[User|#user]|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 生成
+
+* {noformat}application/json{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/user/getUserById?id=1
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "address" : "string",
+  "age" : 0,
+  "id" : 0,
+  "name" : "string",
+  "sex" : "string"
+}
+{code}
+
+
+h4. 根据name和sex获取用户 {anchor:getuserbynameandsexusingpost}
+{noformat}
+POST /user/getUserByNameAndSex
+{noformat}
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Query*|*userName*\\ \\ _必填_||用户名||string|
+|*Query*|*userSex*\\ \\ _必填_||用户性别||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||[User|#user]|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}application/json{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/user/getUserByNameAndSex?userName=关羽&userSex=男
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+{
+  "address" : "string",
+  "age" : 0,
+  "id" : 0,
+  "name" : "string",
+  "sex" : "string"
+}
+{code}
+
+
+h4. 新增用户 {anchor:insertuserusingpost}
+{noformat}
+POST /user/insertUser
+{noformat}
+
+
+h5. 说明
+传json，数据放body
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*body*\\ \\ _必填_||用户对象json||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}application/json{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/user/insertUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+h4. 修改用户 {anchor:updateuserusingpost}
+{noformat}
+POST /user/updateUser
+{noformat}
+
+
+h5. 说明
+传json，数据放body
+
+
+h5. 参数
+
+||类型||名称||说明||类型||
+|*Body*|*body*\\ \\ _必填_||用户对象json||string|
+
+
+h5. 响应
+
+||HTTP代码||说明||类型||
+|*200*||OK||string|
+|*201*||Created||无内容|
+|*401*||Unauthorized||无内容|
+|*403*||Forbidden||无内容|
+|*404*||Not Found||无内容|
+
+
+h5. 消耗
+
+* {noformat}application/json{noformat}
+
+
+h5. 生成
+
+* {noformat}application/json{noformat}
+
+
+h5. HTTP请求示例
+
+h6. 请求 path
+{code}
+/user/updateUser
+{code}
+
+
+h6. 请求 body
+{code:language=json}
+{ }
+{code}
+
+
+h5. HTTP响应示例
+
+h6. 响应 200
+{code:language=json}
+"string"
+{code}
+
+
+
+
+h2. 定义 {anchor:definitions}
+
+h3. User {anchor:user}
+用户信息对象
+
+
+||名称||说明||类型||
+|*address*\\ \\ _可选_||家庭住址\\ \\ *样例* : {noformat}"string"{noformat}||string|
+|*age*\\ \\ _可选_||年龄\\ \\ *样例* : {noformat}0{noformat}||integer (int32)|
+|*id*\\ \\ _可选_||用户id\\ \\ *样例* : {noformat}0{noformat}||integer (int32)|
+|*name*\\ \\ _可选_||用户名\\ \\ *样例* : {noformat}"string"{noformat}||string|
+|*sex*\\ \\ _可选_||性别\\ \\ *样例* : {noformat}"string"{noformat}||string|
+
+
+
+
+

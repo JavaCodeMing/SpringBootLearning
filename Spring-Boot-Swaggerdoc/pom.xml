@@ -16,8 +16,19 @@
 
     <properties>
         <java.version>1.8</java.version>
-
     </properties>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>jcenter-releases</id>
+            <name>jcenter</name>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -52,20 +63,13 @@
             <artifactId>swagger2markup</artifactId>
             <version>1.3.3</version>
         </dependency>
-
         <!--离线文档 -->
-        <dependency>
-            <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-mockmvc</artifactId>
-            <scope>test</scope>
-        </dependency>
         <!--springfox-staticdocs 生成静态文档 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-staticdocs</artifactId>
             <version>2.6.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -80,23 +84,13 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
-                <plugin>
-                    <groupId>io.github.swagger2markup</groupId>
-                    <artifactId>swagger2markup-maven-plugin</artifactId>
-                    <version>1.3.1</version>
-                    <configuration>
-                        <swaggerInput>http://127.0.0.1:8080/v2/api-docs</swaggerInput>
-                        <outputDir>./docs/asciidoc/generated</outputDir>
-                        <config>
-                            <swagger2markup.markupLanguage>ASCIIDOC</swagger2markup.markupLanguage>
-                        </config>
-                    </configuration>
-                </plugin>
+
+                <!--通过插件的方式将已生成的asciidoc静态文件转成HTML或PDF-->
+                <!--执行插件的命令: mvn asciidoctor:process-asciidoc -->
                 <plugin>
                     <groupId>org.asciidoctor</groupId>
                     <artifactId>asciidoctor-maven-plugin</artifactId>
-                    <version>1.5.3</version>
-                    <!-- <version>2.0.0-RC.1</version> -->
+                    <version>1.5.5</version>
                     <!-- Include Asciidoctor PDF for pdf generation -->
                     <dependencies>
                         <dependency>
@@ -107,30 +101,39 @@
                         <dependency>
                             <groupId>org.jruby</groupId>
                             <artifactId>jruby-complete</artifactId>
-                            <version>1.7.21</version>
+                            <version>9.2.8.0</version>
                         </dependency>
                     </dependencies>
                     <configuration>
+                        <!--asciidoc静态文件的目录(asciidoc静态文件已生成才可生成HTML和PDF)-->
                         <sourceDirectory>./docs/asciidoc/generated</sourceDirectory>
-                        <outputDirectory>./docs/asciidoc/html</outputDirectory>
-                        <backend>html</backend>
-                        <!-- <outputDirectory>./docs/asciidoc/pdf</outputDirectory>
-                        <backend>pdf</backend> -->
+                        <attributes>
+                            <toc>left</toc>
+                            <toclevels>3</toclevels>
+                            <numbered/>
+                            <hardbreaks/>
+                            <sectlinks/>
+                            <sectanchors/>
+                            <!--用来解决生成PDF时中文乱码缺失问题-->
+                            <pdf-fontsdir>${project.basedir}/src/main/resources/fonts</pdf-fontsdir>
+                            <pdf-stylesdir>${project.basedir}/src/main/resources/themes</pdf-stylesdir>
+                            <pdf-style>cn</pdf-style>
+                        </attributes>
+                        <!--生成HTML-->
+                        <!--<outputDirectory>./docs/asciidoc/html</outputDirectory>
                         <headerFooter>true</headerFooter>
                         <doctype>book</doctype>
+                        <backend>html</backend>
+                        <sourceHighlighter>coderay</sourceHighlighter>-->
+                        <!--生成PDF-->
+                        <outputDirectory>./docs/asciidoc/pdf</outputDirectory>
+                        <headerFooter>true</headerFooter>
+                        <doctype>book</doctype>
+                        <backend>pdf</backend>
                         <sourceHighlighter>coderay</sourceHighlighter>
-                        <attributes>
-                            <!-- 菜单栏在左边 -->
-                            <toc>left</toc>
-                            <!-- 多标题排列 -->
-                            <toclevels>3</toclevels>
-                            <!-- 自动打数字序号 -->
-                            <sectnums>true</sectnums>
-                        </attributes>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
 </project>

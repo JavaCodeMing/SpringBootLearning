@@ -1,0 +1,16 @@
+
+h2. 定义 {anchor:definitions}
+
+h3. User {anchor:user}
+用户信息对象
+
+
+||名称||说明||类型||
+|*address*\\ \\ _可选_||家庭住址\\ \\ *样例* : {noformat}"string"{noformat}||string|
+|*age*\\ \\ _可选_||年龄\\ \\ *样例* : {noformat}0{noformat}||integer (int32)|
+|*id*\\ \\ _可选_||用户id\\ \\ *样例* : {noformat}0{noformat}||integer (int32)|
+|*name*\\ \\ _可选_||用户名\\ \\ *样例* : {noformat}"string"{noformat}||string|
+|*sex*\\ \\ _可选_||性别\\ \\ *样例* : {noformat}"string"{noformat}||string|
+
+
+

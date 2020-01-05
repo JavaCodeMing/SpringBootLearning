@@ -14,7 +14,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
     @Bean
     public Docket buildDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -32,7 +31,6 @@ public class SwaggerConfig {
     }
 
     private ApiInfo buildApiInfo() {
-
         return new ApiInfoBuilder()
                 //文档标题
                 .title("用户信息API文档")
@@ -49,6 +47,5 @@ public class SwaggerConfig {
                 //更新服务条款URL
                 //.termsOfServiceUrl("")
                 .build();
-
     }
 }

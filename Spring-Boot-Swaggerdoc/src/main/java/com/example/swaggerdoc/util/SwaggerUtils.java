@@ -22,15 +22,22 @@ public class SwaggerUtils {
      */
     public static void generateAsciiDocs() throws MalformedURLException {
         Swagger2MarkupConfig config = new Swagger2MarkupConfigBuilder()
+                //指定了要输出的最终格式:ASCIIDOC
                 .withMarkupLanguage(MarkupLanguage.ASCIIDOC)
+                //指定输出文档的语言环境
                 .withOutputLanguage(Language.ZH)
                 .withPathsGroupedBy(GroupBy.TAGS)
+                //生成文档带接口案例
                 .withGeneratedExamples()
                 .withoutInlineSchema().build();
 
-        Swagger2MarkupConverter.from(new URL(url))
+        Swagger2MarkupConverter
+                //指定了生成静态部署文档的源头配置
+                //可以是URL形式,也可以是符合Swagger规范的String类型或者从文件中读取的流
+                .from(new URL(url))
                 .withConfig(config)
                 .build()
+                //指定最终生成文件的具体目录位置
                 .toFolder(Paths.get("./docs/asciidoc/generated"));
     }
 
@@ -51,6 +58,7 @@ public class SwaggerUtils {
         Swagger2MarkupConverter.from(new URL(url))
                 .withConfig(config)
                 .build()
+                //将转换结果输出到一个单一的文件中
                 .toFile(Paths.get("./docs/asciidoc/generated/all"));
     }
 

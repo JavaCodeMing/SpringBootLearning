@@ -1,0 +1,31 @@
+
+[[_definitions]]
+== 定义
+
+[[_user]]
+=== User
+用户信息对象
+
+
+[options="header", cols=".^3a,.^11a,.^4a"]
+|===
+|名称|说明|类型
+|**address** +
+__可选__|家庭住址 +
+**样例** : `"string"`|string
+|**age** +
+__可选__|年龄 +
+**样例** : `0`|integer (int32)
+|**id** +
+__可选__|用户id +
+**样例** : `0`|integer (int32)
+|**name** +
+__可选__|用户名 +
+**样例** : `"string"`|string
+|**sex** +
+__可选__|性别 +
+**样例** : `"string"`|string
+|===
+
+
+
