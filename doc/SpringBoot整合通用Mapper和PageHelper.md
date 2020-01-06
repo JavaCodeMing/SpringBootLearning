@@ -137,7 +137,7 @@ PageHelper官方文档: https://github.com/pagehelper/Mybatis-PageHelper/blob/ma
         params: count=countSql
 4.编写自定义通用接口MyMapper:
     public interface MyMapper<T> extends Mapper<T>, MySqlMapper<T> {}
-5.在路径src/main/resources/下新建mybatis-generator.xml:
+5.在路径src/main/resources/下新建generatorConfig.xml:
     <!DOCTYPE generatorConfiguration
     PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
     "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
