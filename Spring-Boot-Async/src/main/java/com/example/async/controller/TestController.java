@@ -19,7 +19,6 @@ public class TestController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private final TestService testService;
     private final TestReturnService testReturnService;
-
     @Autowired
     public TestController(TestService testService, TestReturnService testReturnService) {
         this.testService = testService;
@@ -51,6 +50,7 @@ public class TestController {
         long start = System.currentTimeMillis();
         logger.info("异步方法开始");
         Future<String> stringFuture = testReturnService.asyncReturnMethod();
+        //get(long timeout, TimeUnit unit)在设置时间内未返回结果,会直接抛出异常TimeoutException,messages为null
         String result = stringFuture.get();
         logger.info("异步方法返回值：{}", result);
         logger.info("异步方法结束");
