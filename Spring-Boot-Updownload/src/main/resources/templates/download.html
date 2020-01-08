@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件下载</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+<label for="fileName">下载的文件名： </label><input id="fileName" type="text"/>
+<a href="javascript:void(0);" onclick="down()">下载文件</a>
+<a id="download" style="display:none"></a>
+<script>
+    function down() {
+        var fileName = $("#fileName").val().toString();
+        console.log(fileName);
+        var $a = document.getElementById("download");
+        $a.setAttribute("href", "/downloadfile?fileName=" + fileName);
+        $a.click();
+    }
+</script>
+</body>
+</html>
