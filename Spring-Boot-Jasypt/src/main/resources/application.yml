@@ -1,0 +1,11 @@
+name: ENC(Xt2kU2GFjee7eZj/oc/rQg==)
+jasypt:
+  encryptor:
+    password: password
+    algorithm: PBEWithMD5AndDES
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    string-output-type: base64
