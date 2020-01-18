@@ -10,7 +10,7 @@ public class SpringBootJasyptApplication {
         SpringApplication.run(SpringBootJasyptApplication.class, args);
     }
     /*
-    // 使用自定义的Encryptor
+    // 使用自定义的Encryptor需要配置 jasypt.encryptor.bean=encryptorBean
     @Bean(name = "encryptorBean")
     static public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
