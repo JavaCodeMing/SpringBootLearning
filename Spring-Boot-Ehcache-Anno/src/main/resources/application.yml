@@ -68,6 +68,8 @@ mybatis:
   # type-aliases-package:
   # mapper xml实现扫描路径
   mapper-locations: classpath:mapper/*.xml
+  #configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
     com:
