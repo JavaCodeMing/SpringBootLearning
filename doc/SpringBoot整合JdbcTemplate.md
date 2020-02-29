@@ -22,7 +22,8 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.21</version>
         </dependency>
-    [2]在application.yml中配置Druid数据源:(Spring Boot的数据源配置的默认类型是org.apache.tomcat.jdbc.pool.Datasource)
+    [2]在application.yml中配置Druid数据源:
+    (Spring Boot的数据源配置的默认类型是org.apache.tomcat.jdbc.pool.Datasource)
         server:
             servlet:
                 context-path: /web
@@ -85,7 +86,8 @@
                     filter: 
                         stat: 
                             log-slow-sql: true
-        (上述配置配置了Druid作为连接池,还开启了Druid的监控功能;其他配置可参考官方wiki——https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter)
+        (上述配置配置了Druid作为连接池,还开启了Druid的监控功能;其他配置可参考
+            官方wiki——https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter)
     [3]运行项目,Druid监控后台:http://localhost:8080/web/druid
 3.使用JdbcTemplate:
     [1]创建数据库表及插入数据(mysql5.5)
