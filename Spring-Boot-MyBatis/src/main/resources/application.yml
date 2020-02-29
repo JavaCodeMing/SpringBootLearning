@@ -67,3 +67,6 @@ mybatis:
   # type-aliases-package:
   # com xml实现扫描路径
   mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    # SQL日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

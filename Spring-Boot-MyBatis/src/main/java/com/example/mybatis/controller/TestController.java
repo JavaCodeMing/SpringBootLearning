@@ -2,21 +2,22 @@ package com.example.mybatis.controller;
 
 import com.example.mybatis.bean.Student;
 import com.example.mybatis.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * Created by dengzhiming on 2019/3/21
  */
 @RestController
 public class TestController {
-    @Autowired
+    @Resource
     private StudentService service;
 
-    @RequestMapping(value = "/querystudent", method = RequestMethod.GET)
-    public Student queryStudentBySno(String sno) {
+    @GetMapping("/querystudent/{sno}")
+    public Student queryStudentBySno(@PathVariable String sno) {
         return this.service.queryStudentById(sno);
     }
 
