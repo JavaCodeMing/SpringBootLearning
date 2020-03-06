@@ -29,4 +29,12 @@
 25.[SpringBoot整合Hibernate-Validator进行参数校验](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Hibernate-Validator.md)   
 26.[SpringBoot中处理跨域问题](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%B8%AD%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98.md)   
 27.[SpringBoot中实现异步调用](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8.md)   
+28.[SpringBoot整合Kafka](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Kafka.md)   
+29.[SpringBoot整合MongoDB](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88MongoDB.md)   
+30.[SpringBoot使用Webflux整合MongoDB](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E9%9B%86%E6%88%90Webflux%E6%95%B4%E5%90%88MongoDB.md)   
+31.[SpringBoot整合WebService](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88WebService.md)   
+32.[SpringBoot整合Quartz](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E6%95%B4%E5%90%88Quartz%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1.md)   
+33.[SpringBoot实现上传下载](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E5%AE%9E%E7%8E%B0%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD.md)   
+34.[SpringBoot自定义线程池实现多线程调用](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/SpringBoot%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E7%94%A8.md)   
+
 
