@@ -1,67 +1,67 @@
 ```text
-KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
-²¢Ê¹ÄúÄÜ¹»½«ÏûÏ¢´ÓÒ»¸ö¶Ëµã´«µİµ½ÁíÒ»¸ö¶Ëµã;
-1.KafkaµÄ¼¸¸ö»ù±¾ÊõÓï:
-    Topics(Ö÷Ìâ): ÊôÓÚÌØ¶¨Àà±ğµÄÏûÏ¢Á÷³ÆÎªÖ÷Ìâ;Êı¾İ´æ´¢ÔÚÖ÷ÌâÖĞ;
-    Partition(·ÖÇø): Ã¿¸öÖ÷Ìâ¿ÉÄÜÓĞ¶à¸ö·ÖÇø;
-    Partition offset(·ÖÇøÆ«ÒÆ): ·ÖÇøÉÏÃ¿Ìõ¼ÇÂ¼µÄÎ¨Ò»ĞòÁĞ±êÊ¶;
-    Replicas of partition(·ÖÇø±¸·İ): ·ÖÇøµÄ±¸·İ,´Ó²»¶ÁÈ¡»òĞ´ÈëÊı¾İ;
-    Brokers(¾­¼ÍÈË): kafka¼¯ÈºÖĞÃ¿¸ö·şÎñ³ÆÎªbroker;
-    Producers(Éú²úÕß): ·¢ËÍ¸øÒ»¸ö»ò¶à¸öKafkaÖ÷ÌâµÄÏûÏ¢µÄ·¢²¼Õß;
-    Consumers(Ïû·ÑÕß): ¶©ÔÄÒ»¸ö»ò¶à¸öÖ÷Ìâ,²¢´ÓbrokerÌáÈ¡ÒÑ·¢²¼µÄÏûÏ¢À´Ê¹ÓÃ;
-    Leader(Áìµ¼Õß): ¸ºÔğ¸ø¶¨·ÖÇøµÄËùÓĞ¶ÁÈ¡ºÍĞ´ÈëµÄ½Úµã;Ã¿¸ö·ÖÇø¶¼ÓĞÒ»¸ö·şÎñÆ÷³äµ±Leader;
-    Follower(×·ËæÕß): Í¬²½LeaderµÄpartitionÏûÏ¢;
-    Consumer Group(Ïû·ÑÕß×é): TopicÏûÏ¢·ÖÅäµ½Ïû·ÑÕß×é,ÔÙÓÉÏû·ÑÕß×é·ÖÅäµ½¾ßÌåÏû·ÑÊµÀı;
-    (Ã¿¸ö·ÖÇø×î¶àÖ»ÄÜ°ó¶¨Ò»¸öÏû·ÑÕß,Ã¿¸öÏû·ÑÕß¿ÉÒÔÏû·Ñ¶à¸ö·ÖÇø)
-2.Kafka°²×°Ê¹ÓÃ:
-    KafkaÏÂÔØµØÖ·:http://kafka.apache.org/downloads,Ñ¡ÔñBinary downloadsÏÂÔØ,È»ºó½âÑ¹¼´¿É;
-    KafkaµÄÅäÖÃÎÄ¼şÎ»ÓÚconfigÄ¿Â¼ÏÂ(°üº¬kafkaºÍZookeeperµÄÅäÖÃÎÄ¼ş),´ò¿ªserver.properties,
-    ½«broker.idµÄÖµĞŞ¸ÄÎª1,Ã¿¸öbrokerµÄid¶¼±ØĞëÉèÖÃÎªIntegerÀàĞÍ,ÇÒ²»ÄÜÖØ¸´;
-    [1]Æô¶¯Zookeeper:
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞÆô¶¯½Å±¾: 
+Kafkaæ˜¯ä¸€ä¸ªåˆ†å¸ƒå¼å‘å¸ƒ-è®¢é˜…æ¶ˆæ¯ç³»ç»Ÿå’Œä¸€ä¸ªå¼ºå¤§çš„é˜Ÿåˆ—,å¯ä»¥å¤„ç†å¤§é‡çš„æ•°æ®,
+å¹¶ä½¿æ‚¨èƒ½å¤Ÿå°†æ¶ˆæ¯ä»ä¸€ä¸ªç«¯ç‚¹ä¼ é€’åˆ°å¦ä¸€ä¸ªç«¯ç‚¹;
+1.Kafkaçš„å‡ ä¸ªåŸºæœ¬æœ¯è¯­:
+    Topics(ä¸»é¢˜): å±äºç‰¹å®šç±»åˆ«çš„æ¶ˆæ¯æµç§°ä¸ºä¸»é¢˜;æ•°æ®å­˜å‚¨åœ¨ä¸»é¢˜ä¸­;
+    Partition(åˆ†åŒº): æ¯ä¸ªä¸»é¢˜å¯èƒ½æœ‰å¤šä¸ªåˆ†åŒº;
+    Partition offset(åˆ†åŒºåç§»): åˆ†åŒºä¸Šæ¯æ¡è®°å½•çš„å”¯ä¸€åºåˆ—æ ‡è¯†;
+    Replicas of partition(åˆ†åŒºå¤‡ä»½): åˆ†åŒºçš„å¤‡ä»½,ä»ä¸è¯»å–æˆ–å†™å…¥æ•°æ®;
+    Brokers(ç»çºªäºº): kafkaé›†ç¾¤ä¸­æ¯ä¸ªæœåŠ¡ç§°ä¸ºbroker;
+    Producers(ç”Ÿäº§è€…): å‘é€ç»™ä¸€ä¸ªæˆ–å¤šä¸ªKafkaä¸»é¢˜çš„æ¶ˆæ¯çš„å‘å¸ƒè€…;
+    Consumers(æ¶ˆè´¹è€…): è®¢é˜…ä¸€ä¸ªæˆ–å¤šä¸ªä¸»é¢˜,å¹¶ä»brokeræå–å·²å‘å¸ƒçš„æ¶ˆæ¯æ¥ä½¿ç”¨;
+    Leader(é¢†å¯¼è€…): è´Ÿè´£ç»™å®šåˆ†åŒºçš„æ‰€æœ‰è¯»å–å’Œå†™å…¥çš„èŠ‚ç‚¹;æ¯ä¸ªåˆ†åŒºéƒ½æœ‰ä¸€ä¸ªæœåŠ¡å™¨å……å½“Leader;
+    Follower(è¿½éšè€…): åŒæ­¥Leaderçš„partitionæ¶ˆæ¯;
+    Consumer Group(æ¶ˆè´¹è€…ç»„): Topicæ¶ˆæ¯åˆ†é…åˆ°æ¶ˆè´¹è€…ç»„,å†ç”±æ¶ˆè´¹è€…ç»„åˆ†é…åˆ°å…·ä½“æ¶ˆè´¹å®ä¾‹;
+    (æ¯ä¸ªåˆ†åŒºæœ€å¤šåªèƒ½ç»‘å®šä¸€ä¸ªæ¶ˆè´¹è€…,æ¯ä¸ªæ¶ˆè´¹è€…å¯ä»¥æ¶ˆè´¹å¤šä¸ªåˆ†åŒº)
+2.Kafkaå®‰è£…ä½¿ç”¨:
+    Kafkaä¸‹è½½åœ°å€:http://kafka.apache.org/downloads,é€‰æ‹©Binary downloadsä¸‹è½½,ç„¶åè§£å‹å³å¯;
+    Kafkaçš„é…ç½®æ–‡ä»¶ä½äºconfigç›®å½•ä¸‹(åŒ…å«kafkaå’ŒZookeeperçš„é…ç½®æ–‡ä»¶),æ‰“å¼€server.properties,
+    å°†broker.idçš„å€¼ä¿®æ”¹ä¸º1,æ¯ä¸ªbrokerçš„idéƒ½å¿…é¡»è®¾ç½®ä¸ºIntegerç±»å‹,ä¸”ä¸èƒ½é‡å¤;
+    [1]å¯åŠ¨Zookeeper:
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œå¯åŠ¨è„šæœ¬: 
             bin\windows\zookeeper-server-start.bat config\zookeeper.properties
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,ÒÔºóÌ¨½ø³ÌµÄ·½Ê½Ö´ĞĞÆô¶¯½Å±¾:
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,ä»¥åå°è¿›ç¨‹çš„æ–¹å¼æ‰§è¡Œå¯åŠ¨è„šæœ¬:
             bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
-    [2]Æô¶¯Kafka:
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞÆô¶¯½Å±¾:
+    [2]å¯åŠ¨Kafka:
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œå¯åŠ¨è„šæœ¬:
             bin\windows\kafka-server-start.bat config\server.properties
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞÆô¶¯½Å±¾:
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œå¯åŠ¨è„šæœ¬:
             bin/kafka-server-start.sh config/server.properties
-        µ±¿´µ½ÃüÁîĞĞ´òÓ¡startedµÈĞÅÏ¢,ËµÃ÷Æô¶¯Íê±Ï;
-    [3]´´½¨Topic:
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞ´´½¨Topic½Å±¾:
+        å½“çœ‹åˆ°å‘½ä»¤è¡Œæ‰“å°startedç­‰ä¿¡æ¯,è¯´æ˜å¯åŠ¨å®Œæ¯•;
+    [3]åˆ›å»ºTopic:
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œåˆ›å»ºTopicè„šæœ¬:
             bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 
             --replication-factor 1 --partitions 1 --topic test
-            (´´½¨Ò»¸öTopicµ½ZK(Ö¸¶¨ZKµÄµØÖ·),¸±±¾¸öÊıÎª1,·ÖÇøÊıÎª1,TopicµÄÃû³ÆÎªtest)
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞ´´½¨Topic½Å±¾:
+            (åˆ›å»ºä¸€ä¸ªTopicåˆ°ZK(æŒ‡å®šZKçš„åœ°å€),å‰¯æœ¬ä¸ªæ•°ä¸º1,åˆ†åŒºæ•°ä¸º1,Topicçš„åç§°ä¸ºtest)
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œåˆ›å»ºTopicè„šæœ¬:
             bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 
             --partitions 1 --topic test
-    [4]²é¿´KafkaÀïµÄTopicÁĞ±í:
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞTopic½Å±¾:
+    [4]æŸ¥çœ‹Kafkaé‡Œçš„Topicåˆ—è¡¨:
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡ŒTopicè„šæœ¬:
             bin\windows\kafka-topics.bat --list --zookeeper localhost:2181
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞTopic½Å±¾:
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡ŒTopicè„šæœ¬:
             bin/kafka-topics.sh --list --zookeeper localhost:2181
-    [5]²é¿´Ä³¸öTopicµÄ¾ßÌåĞÅÏ¢: (Èç:test)
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞTopic½Å±¾:
+    [5]æŸ¥çœ‹æŸä¸ªTopicçš„å…·ä½“ä¿¡æ¯: (å¦‚:test)
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡ŒTopicè„šæœ¬:
             bin\windows\kafka-topics.bat --describe --zookeeper localhost:2181 --topic test
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞTopic½Å±¾:
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡ŒTopicè„šæœ¬:
             bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test
-    [6]Æô¶¯Producers:
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞproducer½Å±¾:
+    [6]å¯åŠ¨Producers:
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œproducerè„šæœ¬:
             bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic test
-            (9092ÎªÉú²úÕßµÄÄ¬ÈÏ¶Ë¿ÚºÅ,Æô¶¯Éú²úÕßºó,¿ÉÍùtest TopicÀï·¢ËÍÊı¾İ)
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞproducer½Å±¾:
+            (9092ä¸ºç”Ÿäº§è€…çš„é»˜è®¤ç«¯å£å·,å¯åŠ¨ç”Ÿäº§è€…å,å¯å¾€test Topicé‡Œå‘é€æ•°æ®)
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œproducerè„šæœ¬:
             bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
-    [7]Æô¶¯Consumers:
-        (1)WindowsÏÂ,ÔÚcmdÖĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞconsumer½Å±¾:
+    [7]å¯åŠ¨Consumers:
+        (1)Windowsä¸‹,åœ¨cmdä¸­åˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œconsumerè„šæœ¬:
             bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 
             --topic test --from-beginning
-            (from-beginning±íÊ¾´ÓÍ·¿ªÊ¼¶ÁÈ¡Êı¾İ)
-        (2)LinuxÏÂ,ÔÚÖÕ¶ËÃüÁîĞĞÇĞ»»µ½Kafka¸ùÄ¿Â¼,Ö´ĞĞconsumer½Å±¾:
+            (from-beginningè¡¨ç¤ºä»å¤´å¼€å§‹è¯»å–æ•°æ®)
+        (2)Linuxä¸‹,åœ¨ç»ˆç«¯å‘½ä»¤è¡Œåˆ‡æ¢åˆ°Kafkaæ ¹ç›®å½•,æ‰§è¡Œconsumerè„šæœ¬:
             bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 
             --topic test --from-beginning
-3.Spring BootÕûºÏKafaka:
-    [1]ÒıÈëwebÒÀÀµºÍkafkaÒÀÀµ:
+3.Spring Bootæ•´åˆKafaka:
+    [1]å¼•å…¥webä¾èµ–å’Œkafkaä¾èµ–:
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -70,8 +70,8 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-    [2]ÅäÖÃÉú²úÕß:
-        (1)Í¨¹ıÅäÖÃÀà,ÅäÖÃÉú²úÕß¹¤³§¼°kafkaÄ£°å:
+    [2]é…ç½®ç”Ÿäº§è€…:
+        (1)é€šè¿‡é…ç½®ç±»,é…ç½®ç”Ÿäº§è€…å·¥å‚åŠkafkaæ¨¡æ¿:
             @Configuration
             public class KafkaProducerConfig {
                 @Value("${spring.kafka.bootstrap-servers}")
@@ -83,37 +83,37 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                             ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                             bootstrapServers);
                     configProps.put(
-                            //keyµÄĞòÁĞ»¯²ßÂÔ,StringÀàĞÍ
+                            //keyçš„åºåˆ—åŒ–ç­–ç•¥,Stringç±»å‹
                             ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
                             StringSerializer.class);
                     configProps.put(
-                            //valueµÄĞòÁĞ»¯²ßÂÔ,StringÀàĞÍ
+                            //valueçš„åºåˆ—åŒ–ç­–ç•¥,Stringç±»å‹
                             ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                             StringSerializer.class);
                     return new DefaultKafkaProducerFactory<>(configProps);
                 }
-                //Æä°üº¬ÁË·¢ËÍÏûÏ¢µÄ±ã½İ·½·¨
+                //å…¶åŒ…å«äº†å‘é€æ¶ˆæ¯çš„ä¾¿æ·æ–¹æ³•
                 @Bean
                 public KafkaTemplate<String, String> kafkaTemplate() {
                     return new KafkaTemplate<>(producerFactory());
                 }
             }
-        (2)ÅäÖÃÎÄ¼şapplication.ymlÖĞÅäÖÃÉú²úÕßµÄµØÖ·:
+        (2)é…ç½®æ–‡ä»¶application.ymlä¸­é…ç½®ç”Ÿäº§è€…çš„åœ°å€:
             spring:
                 kafka:
                     bootstrap-servers: localhost:9092
-    [3]±àĞ´·¢ËÍÏûÏ¢µÄcontroller:
+    [3]ç¼–å†™å‘é€æ¶ˆæ¯çš„controller:
         @RestController
         public class SendMessageController {
             @Autowired
             private KafkaTemplate<String, String> kafkaTemplate;
             @GetMapping("send/{message}")
             public void send(@PathVariable String message) {
-                // testÎªTopicµÄÃû³Æ,messageÎªÒª·¢ËÍµÄÏûÏ¢
+                // testä¸ºTopicçš„åç§°,messageä¸ºè¦å‘é€çš„æ¶ˆæ¯
                 this.kafkaTemplate.send("test", message);
             }
         }
-       send·½·¨ÊÇÒì²½·½·¨,¿ÉÍ¨¹ı»Øµ÷µÄ·½Ê½À´È·¶¨ÏûÏ¢ÊÇ·ñ·¢ËÍ³É¹¦,¸ÄÔìcontroller:
+       sendæ–¹æ³•æ˜¯å¼‚æ­¥æ–¹æ³•,å¯é€šè¿‡å›è°ƒçš„æ–¹å¼æ¥ç¡®å®šæ¶ˆæ¯æ˜¯å¦å‘é€æˆåŠŸ,æ”¹é€ controller:
         @RestController
         public class SendMessageController {
             private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -126,19 +126,19 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                 future.addCallback(new ListenableFutureCallback<SendResult<String,String>>(){
                     @Override
                     public void onSuccess(SendResult<String, String> result) {
-                        logger.info("³É¹¦·¢ËÍÏûÏ¢£º{}£¬offset=[{}]", message, 
+                        logger.info("æˆåŠŸå‘é€æ¶ˆæ¯ï¼š{}ï¼Œoffset=[{}]", message, 
                             result.getRecordMetadata().offset());
                     }
                     @Override
                     public void onFailure(Throwable ex) {
-                        logger.error("ÏûÏ¢£º{} ·¢ËÍÊ§°Ü£¬Ô­Òò£º{}", message, ex.getMessage());
+                        logger.error("æ¶ˆæ¯ï¼š{} å‘é€å¤±è´¥ï¼ŒåŸå› ï¼š{}", message, ex.getMessage());
                     }
                 });
             }
         }
-    [4]ÅäÖÃÏû·ÑÕß:
-        (1)Í¨¹ıÅäÖÃÀà,ÅäÖÃÏû·ÑÕß¹¤³§ºÍ¼àÌıÈİÆ÷¹¤³§:
-            //ÅäÖÃÀàÉÏĞèÒª@EnableKafka×¢ÊÍ²ÅÄÜÔÚSpringÍĞ¹ÜBeanÉÏ¼ì²â@KafkaListener×¢½â
+    [4]é…ç½®æ¶ˆè´¹è€…:
+        (1)é€šè¿‡é…ç½®ç±»,é…ç½®æ¶ˆè´¹è€…å·¥å‚å’Œç›‘å¬å®¹å™¨å·¥å‚:
+            //é…ç½®ç±»ä¸Šéœ€è¦@EnableKafkaæ³¨é‡Šæ‰èƒ½åœ¨Springæ‰˜ç®¡Beanä¸Šæ£€æµ‹@KafkaListeneræ³¨è§£
             @EnableKafka    
             @Configuration
             public class KafkaConsumerConfig {
@@ -177,40 +177,40 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                     return factory;
                 }
             }
-        (2)ÔÚapplication.ymlÀïÅäÖÃÏû·ÑÕß×éIDºÍÏûÏ¢¶ÁÈ¡²ßÂÔ:
+        (2)åœ¨application.ymlé‡Œé…ç½®æ¶ˆè´¹è€…ç»„IDå’Œæ¶ˆæ¯è¯»å–ç­–ç•¥:
             spring:
                 kafka:
                     consumer:
                         group-id: test-consumer
                         auto-offset-reset: latest
             
-            ÏûÏ¢¶ÁÈ¡²ßÂÔ,°üº¬ËÄ¸ö¿ÉÑ¡Öµ:
-                earliest:µ±¸÷·ÖÇøÏÂÓĞÒÑÌá½»µÄoffsetÊ±,´ÓÌá½»µÄoffset¿ªÊ¼Ïû·Ñ;
-                    ÎŞÌá½»µÄoffsetÊ±,´ÓÍ·¿ªÊ¼Ïû·Ñ;
-                latest:µ±¸÷·ÖÇøÏÂÓĞÒÑÌá½»µÄoffsetÊ±,´ÓÌá½»µÄoffset¿ªÊ¼Ïû·Ñ;
-                    ÎŞÌá½»µÄoffsetÊ±,Ïû·ÑĞÂ²úÉúµÄ¸Ã·ÖÇøÏÂµÄÊı¾İ;
-                none:topic¸÷·ÖÇø¶¼´æÔÚÒÑÌá½»µÄoffsetÊ±,´Óoffsetºó¿ªÊ¼Ïû·Ñ;
-                    Ö»ÒªÓĞÒ»¸ö·ÖÇø²»´æÔÚÒÑÌá½»µÄoffset,ÔòÅ×³öÒì³£;
-                exception:Ö±½ÓÅ×³öÒì³£;
-    [5]±àĞ´ÏûÏ¢¼àÌıÆ÷Àà:
+            æ¶ˆæ¯è¯»å–ç­–ç•¥,åŒ…å«å››ä¸ªå¯é€‰å€¼:
+                earliest:å½“å„åˆ†åŒºä¸‹æœ‰å·²æäº¤çš„offsetæ—¶,ä»æäº¤çš„offsetå¼€å§‹æ¶ˆè´¹;
+                    æ— æäº¤çš„offsetæ—¶,ä»å¤´å¼€å§‹æ¶ˆè´¹;
+                latest:å½“å„åˆ†åŒºä¸‹æœ‰å·²æäº¤çš„offsetæ—¶,ä»æäº¤çš„offsetå¼€å§‹æ¶ˆè´¹;
+                    æ— æäº¤çš„offsetæ—¶,æ¶ˆè´¹æ–°äº§ç”Ÿçš„è¯¥åˆ†åŒºä¸‹çš„æ•°æ®;
+                none:topicå„åˆ†åŒºéƒ½å­˜åœ¨å·²æäº¤çš„offsetæ—¶,ä»offsetåå¼€å§‹æ¶ˆè´¹;
+                    åªè¦æœ‰ä¸€ä¸ªåˆ†åŒºä¸å­˜åœ¨å·²æäº¤çš„offset,åˆ™æŠ›å‡ºå¼‚å¸¸;
+                exception:ç›´æ¥æŠ›å‡ºå¼‚å¸¸;
+    [5]ç¼–å†™æ¶ˆæ¯ç›‘å¬å™¨ç±»:
         @Component
         public class KafkaMessageListener {
             private Logger logger = LoggerFactory.getLogger(this.getClass());
-            // Ö¸¶¨¼àÌıµÄÖ÷ÌâºÍÏû·ÑÕß×é
+            // æŒ‡å®šç›‘å¬çš„ä¸»é¢˜å’Œæ¶ˆè´¹è€…ç»„
             @KafkaListener(topics = "test", groupId = "test-consumer")
             public void listen(String message) {
-                logger.info("½ÓÊÕÏûÏ¢: {}", message);
+                logger.info("æ¥æ”¶æ¶ˆæ¯: {}", message);
             }
         }
-4.@KafkaListenerÏê½â:
-    [1]Í¬Ê±¼àÌıÀ´×Ô¶à¸öTopicµÄÏûÏ¢: @KafkaListener(topics = "topic1, topic2")
-    [2]@Header×¢½â»ñÈ¡µ±Ç°ÏûÏ¢À´×ÔÄÄ¸ö·ÖÇø: 
+4.@KafkaListenerè¯¦è§£:
+    [1]åŒæ—¶ç›‘å¬æ¥è‡ªå¤šä¸ªTopicçš„æ¶ˆæ¯: @KafkaListener(topics = "topic1, topic2")
+    [2]@Headeræ³¨è§£è·å–å½“å‰æ¶ˆæ¯æ¥è‡ªå“ªä¸ªåˆ†åŒº: 
         @KafkaListener(topics = "test", groupId = "test-consumer")
         public void listen(@Payload String message,
                         @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
-            logger.info("½ÓÊÕÏûÏ¢: {}£¬partition£º{}", message, partition);
+            logger.info("æ¥æ”¶æ¶ˆæ¯: {}ï¼Œpartitionï¼š{}", message, partition);
         }
-    [3]Ö¸¶¨Ö»½ÓÊÕÀ´×ÔÌØ¶¨·ÖÇøµÄÏûÏ¢:
+    [3]æŒ‡å®šåªæ¥æ”¶æ¥è‡ªç‰¹å®šåˆ†åŒºçš„æ¶ˆæ¯:
         @KafkaListener(
             groupId = "test-consumer",
             topicPartitions = @TopicPartition(
@@ -222,28 +222,28 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
         )
         public void listen(@Payload String message,
                         @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
-            logger.info("½ÓÊÕÏûÏ¢: {}£¬partition£º{}", message, partition);
+            logger.info("æ¥æ”¶æ¶ˆæ¯: {}ï¼Œpartitionï¼š{}", message, partition);
         }
-       Èç¹û²»ĞèÒªÖ¸¶¨initialOffset,ÉÏÃæ´úÂë¿ÉÒÔ¼ò»¯Îª:
+       å¦‚æœä¸éœ€è¦æŒ‡å®šinitialOffset,ä¸Šé¢ä»£ç å¯ä»¥ç®€åŒ–ä¸º:
         @KafkaListener(groupId = "test-consumer", 
             topicPartitions = @TopicPartition(topic = "test", partitions = { "0", "1" }))
-5.ÎªÏûÏ¢¼àÌıÌí¼ÓÏûÏ¢¹ıÂËÆ÷: setRecordFilterStrategy(RecordFilterStrategy<K, V> strategy)
+5.ä¸ºæ¶ˆæ¯ç›‘å¬æ·»åŠ æ¶ˆæ¯è¿‡æ»¤å™¨: setRecordFilterStrategy(RecordFilterStrategy<K, V> strategy)
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> 
         kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, String> factory
                 = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
-        // Ìí¼Ó¹ıÂËÅäÖÃ
+        // æ·»åŠ è¿‡æ»¤é…ç½®
         factory.setRecordFilterStrategy( r -> r.value().contains("fuck"));
         return factory;
     }
-    // RecordFilterStrategy½Ó¿Ú: (ÊÇº¯ÊıÊ½½Ó¿Ú)
+    // RecordFilterStrategyæ¥å£: (æ˜¯å‡½æ•°å¼æ¥å£)
     public interface RecordFilterStrategy<K, V> {
         boolean filter(ConsumerRecord<K, V> var1);
     }
-6.·¢ËÍ¸´ÔÓµÄÏûÏ¢: (Í¨¹ı×Ô¶¨ÒåÏûÏ¢×ª»»Æ÷À´·¢ËÍ¸´ÔÓµÄÏûÏ¢)
-    [1]¶¨ÒåÏûÏ¢ÊµÌå: 
+6.å‘é€å¤æ‚çš„æ¶ˆæ¯: (é€šè¿‡è‡ªå®šä¹‰æ¶ˆæ¯è½¬æ¢å™¨æ¥å‘é€å¤æ‚çš„æ¶ˆæ¯)
+    [1]å®šä¹‰æ¶ˆæ¯å®ä½“: 
         public class Message implements Serializable {
             private static final long serialVersionUID = 6678420965611108427L;
             private String from;
@@ -260,14 +260,14 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                         ", message='" + message + '\'' +
                         '}';
             }
-            // get set ÂÔ
+            // get set ç•¥
         }
-    [2]¸ÄÔìÏûÏ¢Éú²úÕßÅäÖÃ:
+    [2]æ”¹é€ æ¶ˆæ¯ç”Ÿäº§è€…é…ç½®:
         @Configuration
         public class KafkaProducerConfig {
             @Value("${spring.kafka.bootstrap-servers}")
             private String bootstrapServers;
-            // ·µ»ØÀàĞÍÎªProducerFactory<String,Message>
+            // è¿”å›ç±»å‹ä¸ºProducerFactory<String,Message>
             @Bean
             public ProducerFactory<String, Message> producerFactory() {
                 Map<String, Object> configProps = new HashMap<>();
@@ -278,18 +278,18 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                         ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
                         StringSerializer.class);
                 configProps.put(
-                        //½«valueĞòÁĞ»¯²ßÂÔÖ¸¶¨ÎªÁËKafkaÌá¹©µÄJsonSerializer
+                        //å°†valueåºåˆ—åŒ–ç­–ç•¥æŒ‡å®šä¸ºäº†Kafkaæä¾›çš„JsonSerializer
                         ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
                         JsonSerializer.class);
                 return new DefaultKafkaProducerFactory<>(configProps);
             }
-            // ·µ»ØÀàĞÍÎªKafkaTemplate<String, Message>
+            // è¿”å›ç±»å‹ä¸ºKafkaTemplate<String, Message>
             @Bean
             public KafkaTemplate<String, Message> kafkaTemplate() {
                 return new KafkaTemplate<>(producerFactory());
             }
         }
-    [3]ÔÚcontrollerÖĞ·¢ËÍ¸´ÔÓÏûÏ¢:
+    [3]åœ¨controllerä¸­å‘é€å¤æ‚æ¶ˆæ¯:
         @RestController
         public class SendMessageController {
             private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -300,7 +300,7 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                 this.kafkaTemplate.send("test", new Message("kimi", message));
             }
         }
-    [4]ĞŞ¸ÄÏû·ÑÕßÅäÖÃ:
+    [4]ä¿®æ”¹æ¶ˆè´¹è€…é…ç½®:
         @EnableKafka
         @Configuration
         public class KafkaConsumerConfig {
@@ -336,17 +336,17 @@ KafkaÊÇÒ»¸ö·Ö²¼Ê½·¢²¼-¶©ÔÄÏûÏ¢ÏµÍ³ºÍÒ»¸öÇ¿´óµÄ¶ÓÁĞ,¿ÉÒÔ´¦Àí´óÁ¿µÄÊı¾İ,
                 return factory;
             }
         }
-    [5]ĞŞ¸ÄÏûÏ¢¼àÌı:
+    [5]ä¿®æ”¹æ¶ˆæ¯ç›‘å¬:
         @Component
         public class KafkaMessageListener {
             private Logger logger = LoggerFactory.getLogger(this.getClass());
-            // Ö¸¶¨¼àÌıµÄÖ÷ÌâºÍÏû·ÑÕß×é
+            // æŒ‡å®šç›‘å¬çš„ä¸»é¢˜å’Œæ¶ˆè´¹è€…ç»„
             @KafkaListener(topics = "test", groupId = "test-consumer")
             public void listen(Message message) {
-                logger.info("½ÓÊÕÏûÏ¢: {}", message);
+                logger.info("æ¥æ”¶æ¶ˆæ¯: {}", message);
             }
         }
-7.¸ü¶àÅäÖÃ: 
+7.æ›´å¤šé…ç½®: 
 (https://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle/#common-application-properties)
     # APACHE KAFKA (KafkaProperties)
     spring.kafka.admin.client-id= 
