@@ -93,4 +93,30 @@
     		spring.profiles.active=dev
     [2]命令行设置属性启动,使用多环境配置文件:
     	命令行设置spring.profiles.active属性的值: java-jar xxx.jar--spring.profiles.active={profile}
+7.YAML语法:
+    [1]基本语法: k:(空格)v : 表示一对键值对(空格必须有);
+        (以空格的缩进来控制层级关系;只要是左对齐的一列数据,都是同一个层级的;属性和值也是大小写敏感)
+    [2]值的写法:
+        (1)字面量: 普通的值(数字,字符串,布尔)
+            k: v: 字面直接来写;字符串默认不用加上单引号或者双引号;
+            1)值加双引号: 不会转义字符串里面的特殊字符;特殊字符会作为本身想表示的意思;
+                name: "zhangsan \n lisi": 输出 zhangsan 换行 lisi
+            2)值加单引号: 会转义特殊字符,特殊字符最终只是一个普通的字符串数据;
+                name: 'zhangsan \n lisi':输出 zhangsan \n lisi
+        (2)对象、Map(属性和值)(键值对):
+            1)多行写法: 
+                friends:
+                  lastName: zhangsan 
+                  age: 20
+            2)行内写法:
+                friends: {lastName: zhangsan,age: 18}
+        (3)数组(List、Set):
+            用"- 值"表示数组中的一个元素;
+            1)多行写法:
+                pets: 
+                  ‐ cat 
+                  ‐ dog 
+                  ‐ pig
+            2)行内写法:
+                pets: [cat,dog,pig]
 ```
