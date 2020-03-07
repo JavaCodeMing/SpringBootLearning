@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @GetMapping("/user/condition")
-    public Page<User> getUserByCondition(int size, int page, User user) {
-        return this.service.selectByCondition(size, page, user);
+    public Page<User> getUserByCondition(int page, int size, User user) {
+        return this.service.selectByCondition(page, size, user);
     }
 }

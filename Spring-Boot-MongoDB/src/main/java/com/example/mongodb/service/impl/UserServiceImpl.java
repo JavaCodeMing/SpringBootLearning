@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<User> selectByCondition(int size, int page, User user) {
+    public Page<User> selectByCondition(int page, int size, User user) {
         Query query = new Query();
         Criteria criteria = new Criteria();
         if (!StringUtils.isEmpty(user.getName())) {
@@ -74,9 +74,7 @@ public class UserServiceImpl implements UserService {
             criteria.and("description").regex(user.getDescription());
         }
         query.addCriteria(criteria);
-
-        Sort sort = new Sort(Sort.Direction.DESC, "age");
-        PageRequest pageable = PageRequest.of(page, size, sort);
+        PageRequest pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC,"age"));
 
         List<User> users = template.find(query.with(pageable), User.class);
         return PageableExecutionUtils.getPage(users, pageable, () -> template.count(query, User.class));

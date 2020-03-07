@@ -20,5 +20,5 @@ public interface UserService {
 
     void deleteById(String id);
 
-    Page<User> selectByCondition(int size, int page, User user);
+    Page<User> selectByCondition(int page, int size, User user);
 }
