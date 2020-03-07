@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8081
 
 spring:
   datasource:
@@ -69,7 +69,6 @@ spring:
     virtual-host: /
     #连接超时时间
     connection-timeout: 15000
-    publisher-confirms: true
     publisher-returns: true
     template:
       mandatory: true
