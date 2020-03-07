@@ -1,3 +1,7 @@
 
 *.cmd
 */.idea/*
+*/HELP.md
+*/mvnw
+*/mvnw.cmd
+*/.gitignore
