@@ -5,9 +5,9 @@ server:
 spring:
   mail:
     host: smtp.qq.com           #发送邮件服务器
-    username: 1206291365@qq.com #QQ邮箱
+    username: xxx@qq.com        #QQ邮箱
     #授权码参考:https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28
-    password: zwjoyleymbhrfjfh  #客户端授权码
+    password: xxx               #客户端授权码
     protocol: smtp              #发送邮件协议
     default-encoding: utf-8     #编码格式
     properties:
@@ -24,5 +24,5 @@ spring:
     admin:
       notify:
         mail:
-          from: 1206291365@qq.com
-          to: zmdeng994@163.com
+          from: xxx@qq.com
+          to: xxx@163.com
