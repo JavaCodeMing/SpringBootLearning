@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
  * Created by dengzhiming on 2019/3/29
  */
 @Aspect
-@Order(-1)//保证该AOP在@Transactional之前执行
+@Order(Ordered.HIGHEST_PRECEDENCE)//保证该AOP在@Transactional之前执行
 @Component
 public class DynamicDataSourceAspect {
     /*
@@ -39,6 +40,5 @@ public class DynamicDataSourceAspect {
         System.out.println("Revert DataSource : {} > {}" + targetDataSource.value() + point.getSignature());
         //方法执行完毕之后，销毁当前数据源信息，进行垃圾回收。
         DynamicDataSourceContextHolder.clearDataSourceType();
-
     }
 }

@@ -93,11 +93,11 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
             if (type == null) {
                 type = DATASOURCE_TYPE_DEFAULT;// 默认DataSource
             }
-            Class<? extends DataSource> dataSourceType;
-            dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
+            Class<? extends DataSource> dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
             ConfigurationPropertySource source = new MapConfigurationPropertySource(dataSourceMap);
             Binder binder = new Binder(source.withAliases(aliases));
-            return binder.bind(ConfigurationPropertyName.EMPTY, Bindable.of(dataSourceType)).get(); //通过类型绑定参数并获得实例对象
+            //通过类型绑定参数并获得实例对象
+            return binder.bind(ConfigurationPropertyName.EMPTY, Bindable.of(dataSourceType)).get();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

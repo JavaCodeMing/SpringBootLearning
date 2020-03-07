@@ -14,11 +14,11 @@ import java.util.Map;
  * Created by dengzhiming on 2019/4/7
  */
 @Service("studentService")
-public class StudentServiceImp implements StudentService {
+public class StudentServiceImpl implements StudentService {
     private final StudentMapper studentMapper;
 
     @Autowired
-    public StudentServiceImp(StudentMapper studentMapper) {
+    public StudentServiceImpl(StudentMapper studentMapper) {
         this.studentMapper = studentMapper;
     }
 
