@@ -1,0 +1,28 @@
+server:
+  servlet:
+    context-path: /admin-server
+  port: 8080
+spring:
+  mail:
+    host: smtp.qq.com           #发送邮件服务器
+    username: xxx@qq.com        #QQ邮箱
+    #授权码参考:https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28
+    password: xxx               #客户端授权码
+    protocol: smtp              #发送邮件协议
+    default-encoding: utf-8     #编码格式
+    properties:
+      mail:
+        smtp:
+          auth: true        #开启认证
+          port: 465         #端口号465(开启SSL时)或587(不开启SSL时)
+          ssl:
+            enable: true    #开启SSL(使用587端口时无法连接QQ邮件服务器)
+        starttls:
+          enable: true      #需要TLS认证 保证发送邮件安全验证
+          required: true
+  boot:
+    admin:
+      notify:
+        mail:
+          from: xxx@qq.com  #发送方邮箱
+          to: xxx@163.com   #接收方邮箱
