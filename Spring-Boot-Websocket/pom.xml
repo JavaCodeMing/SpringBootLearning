@@ -27,13 +27,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-        <!--&lt;!&ndash; RabbitMQ Starter Dependency &ndash;&gt;
-        <dependency>
+        <!-- RabbitMQ Starter Dependency -->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        &lt;!&ndash; Following additional dependency is required for Full Featured STOMP Broker Relay &ndash;&gt;
-        <dependency>
+        </dependency>-->
+        <!-- Following additional dependency is required for Full Featured STOMP Broker Relay -->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-reactor-netty</artifactId>
         </dependency>-->
