@@ -75,7 +75,7 @@ public class TestController {
             StringBuffer sb = new StringBuffer();
             for (int count = 0; count < nl.getLength(); count++) {
                 Node n = nl.item(count);
-                if (n.getFirstChild().getNodeValue().equals("查询结果为空！")) {
+                if ("查询结果为空！".equals(n.getFirstChild().getNodeValue())) {
                     sb = new StringBuffer(" ");
                     break;
                 }
