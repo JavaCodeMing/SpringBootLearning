@@ -1,5 +1,5 @@
 # SpringBootLearning
-基于Spring Boot 2.1.x(正逐步更新到2.2.x) ，后续将不断加入其他框架示例，以期能将这些功能整合起来进行项目的独立开发。后续将持续更新......   
+基于Spring Boot 2.2.x ，后续将不断加入其他框架示例，以期能将这些功能整合起来进行项目的独立开发。后续将持续更新......   
 (除个别需要外，其他示例都默认采用Mybatis、MySQL、Druid)
 
 1.[开启SpringBoot](https://github.com/JavaCodeMing/SpringBootLearning/blob/master/doc/%E5%BC%80%E5%90%AFSpringBoot.md)   
