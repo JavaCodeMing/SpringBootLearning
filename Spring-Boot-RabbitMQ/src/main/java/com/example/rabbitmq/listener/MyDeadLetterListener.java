@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class MyDeadLetterListener {
-
     @RabbitListener(
             containerFactory = "jsonListenerFactory",
             bindings = {@QueueBinding(

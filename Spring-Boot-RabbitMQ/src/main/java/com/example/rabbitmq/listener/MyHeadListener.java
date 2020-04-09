@@ -24,7 +24,6 @@ public class MyHeadListener {
         System.out.println("来自 headQueue-one 的消息:" + msg);
     }
 
-
     /**
      * 全匹配
      *

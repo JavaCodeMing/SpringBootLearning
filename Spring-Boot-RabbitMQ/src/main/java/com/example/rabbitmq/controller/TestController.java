@@ -102,7 +102,7 @@ public class TestController {
                         message.getMessageProperties().setExpiration("15000");
                         return message;
                     });
-            System.out.println(now.format(dateTimeFormatter)+ " 消息发送："+student.toString());
+            System.out.println(now.format(dateTimeFormatter) + " 消息发送：" + student.toString());
         }
         return students;
     }

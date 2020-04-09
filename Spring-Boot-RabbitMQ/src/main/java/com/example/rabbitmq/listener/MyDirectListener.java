@@ -6,11 +6,6 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(
-        bindings = @QueueBinding(
-                value = @Queue("myDirectQueue"),
-                exchange = @Exchange(value = "myDirectExchange", type = ExchangeTypes.DIRECT),
-                key = "mine.direct"))
 public class MyDirectListener {
 
     /**
@@ -18,7 +13,12 @@ public class MyDirectListener {
      *
      * @param msg 消息内容,当只有一个参数的时候可以不加@Payload注解
      */
-    @RabbitHandler
+    @RabbitListener(
+            bindings = @QueueBinding(
+                    value = @Queue("myDirectQueue"),
+                    exchange = @Exchange(value = "myDirectExchange", type = ExchangeTypes.DIRECT),
+                    key = "mine.direct")
+    )
     public void onMessage(@Payload String msg) {
         System.out.println("来自 myDirectExchange 的消息:" + msg);
     }

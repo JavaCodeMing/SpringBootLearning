@@ -11,14 +11,13 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-@RabbitListener(
-        containerFactory = "myListenerFactory",
-        bindings = @QueueBinding(
-                value = @Queue("myManualAckQueue"),
-                exchange = @Exchange(value = "myManualAckExchange", type = ExchangeTypes.DIRECT),
-                key = "mine.manual"))
 public class MyAckListener {
-    @RabbitHandler
+    @RabbitListener(
+            containerFactory = "myListenerFactory",
+            bindings = @QueueBinding(
+                    value = @Queue("myManualAckQueue"),
+                    exchange = @Exchange(value = "myManualAckExchange", type = ExchangeTypes.DIRECT),
+                    key = "mine.manual"))
     public void onMessage(@Payload String msg, @Headers Map<String, Object> headers, Channel channel) throws Exception {
         try {
             System.out.println("来自 myManualAckQueue 的消息:" + msg);
