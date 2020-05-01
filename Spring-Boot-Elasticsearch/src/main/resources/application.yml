@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: springboot-elasticsearch
+  thymeleaf:
+    # 开发时关闭缓存不然没法看到实时页面
+    cache: off
+    # 启用不严格检查
+    mode: HTML
+# Elasticsearch配置
+elasticsearch:
+  hostname: localhost
+  port: 9200
