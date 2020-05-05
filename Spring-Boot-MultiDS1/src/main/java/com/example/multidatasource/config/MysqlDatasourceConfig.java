@@ -16,6 +16,12 @@ import javax.sql.DataSource;
 
 /**
  * Created by dengzhiming on 2019/3/27
+ *
+ * 该配置类主要包括:
+ *  1.@MapperScan注解配置mybatis的扫描路径和sqlSessionFactory的引用
+ *  2.从属性文件中读取配置用来创建数据源(DataSource)
+ *  3.引用刚创建的数据源来创建事务管理器(DataSourceTransactionManager)
+ *  4.创建SqlSessionFactory,并设置使用刚创建的数据源,设置SQL的xml文件为mapperLocation
  */
 @Configuration
 @MapperScan(basePackages = MysqlDatasourceConfig.PACKAGE, sqlSessionFactoryRef = "mysqlSqlSessionFactory")
