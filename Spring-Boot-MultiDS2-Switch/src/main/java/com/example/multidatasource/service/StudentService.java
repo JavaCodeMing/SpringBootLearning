@@ -10,4 +10,6 @@ public interface StudentService {
     List<Map<String, Object>> getAllStudentsFromMaster();
 
     List<Map<String, Object>> getAllStudentsFromSlave();
+
+    int updateStudent(int sno,String sname);
 }

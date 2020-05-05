@@ -5,4 +5,7 @@
     <select id="getAllStudents" resultType="java.util.Map">
         select * from student
     </select>
+    <update id="updateStudent">
+        update student set sname = #{sname} where sno = #{sno}
+    </update>
 </mapper>

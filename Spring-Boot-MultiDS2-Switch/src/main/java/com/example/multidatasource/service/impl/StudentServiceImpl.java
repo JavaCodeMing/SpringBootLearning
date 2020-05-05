@@ -23,14 +23,24 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public List<Map<String, Object>> getAllStudentsFromMaster() {
-        return this.studentMapper.getAllStudents();
+        return studentMapper.getAllStudents();
+    }
+
+    @Override
+    @TargetDataSource("ds1")
+    public List<Map<String, Object>> getAllStudentsFromSlave() {
+        return studentMapper.getAllStudents();
     }
 
     @Override
     @TargetDataSource("ds1")
     @Transactional
-    public List<Map<String, Object>> getAllStudentsFromSlave() {
-        return this.studentMapper.getAllStudents();
+    public int updateStudent(int sno, String sname) {
+        int i = -1;
+        i = studentMapper.updateStudent(sno, sname);
+        int j = 1/0;
+        return i;
     }
 }

@@ -2,7 +2,9 @@ package com.example.multidatasource.controller;
 
 import com.example.multidatasource.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,13 +22,23 @@ public class DataSourceController {
         this.studentService = studentService;
     }
 
-    @RequestMapping("/querystudentsfromoracle")
+    @GetMapping("/querystudentsfromoracle")
     public List<Map<String, Object>> queryStudentsFromOracle() {
-        return this.studentService.getAllStudentsFromSlave();
+        return studentService.getAllStudentsFromSlave();
     }
 
-    @RequestMapping("/querystudentsfrommysql")
+    @PostMapping("/updateStudent/{sno}/{sname}")
+    public String updateStudent(@PathVariable("sno") int sno, @PathVariable("sname") String sname) {
+        int i = studentService.updateStudent(sno, sname);
+        if (i == -1) {
+            return "failure";
+        } else {
+            return "success";
+        }
+    }
+
+    @GetMapping("/querystudentsfrommysql")
     public List<Map<String, Object>> queryStudentsFromMysql() {
-        return this.studentService.getAllStudentsFromMaster();
+        return studentService.getAllStudentsFromMaster();
     }
 }
