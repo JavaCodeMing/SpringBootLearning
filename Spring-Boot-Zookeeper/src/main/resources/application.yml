@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: springboot-zookeeper
+zookeeper:
+  #开启标志
+  enabled: true
+  #服务器地址
+  server: 127.0.0.1:2181
+  #命名空间,被称为ZNode
+  namespace: cicada
+  #权限控制,加密
+  digest: smile:123456
+  #会话超时时间
+  sessionTimeoutMs: 3000
+  #连接超时时间
+  connectionTimeoutMs: 60000
+  #最大重试次数
+  maxRetries: 2
+  #初始休眠时间
+  baseSleepTimeMs: 1000
