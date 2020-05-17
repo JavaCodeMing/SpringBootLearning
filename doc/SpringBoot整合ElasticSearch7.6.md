@@ -171,6 +171,20 @@
           "analyzer":"pinyin"
         }
 ```
+# 安装Kibana
+```
+1.Kibana的Dev Tools:
+    [1]下载Kibana的压缩包,上传到linux,解压;(官网也提供了Windows版)
+    [2]进入解压目录下的config目录,修改Kibana的配置文件kibana.yml:
+        # 访问Kibana的ip,"0.0.0.0"表示任何ip都可访问
+        server.host: "0.0.0.0"
+        # 要连接的elasticsearch的访问路径
+        elasticsearch.url: "http://192.168.xxx.xxx:9200"
+    [3]进入解压目录下的bin目录,启动Kibana:
+        ./kibana
+    [4]若启动正常,访问一下URL进入Kibana:
+        http://192.168.xxx.xxx:5601
+```
 # SpringBoot整合Elasticsearch
 ```text
 1.SpringBoot整合Elasticsearch的方式(TransportClient、Data-ES、Elasticsearch SQL、REST Client):
@@ -186,7 +200,7 @@
         (1)官方推荐使用,分为两个Low Level REST Client和High Level REST Client;
         (2)Low Level REST Client是早期出的API比较简陋了,还需要自己去拼写Query DSL;
         (3)High Level REST Client使用起来更好用,更符合面向对象的感觉;
-2.创建index和mapping:
+2.使用Kibana创建index和mapping:
     [1]创建Index,拼音分词过滤:
 		PUT /book
 		{
