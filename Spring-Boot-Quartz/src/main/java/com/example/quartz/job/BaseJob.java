@@ -1,13 +1,10 @@
 package com.example.quartz.job;
 
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import org.springframework.scheduling.quartz.QuartzJobBean;
 
 /**
  * Created by dengzhiming on 2019/8/1
  */
-public interface BaseJob extends Job {
-    @Override
-    void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException;
+public abstract class BaseJob extends QuartzJobBean {
+
 }

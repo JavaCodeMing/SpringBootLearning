@@ -48,6 +48,5 @@ public class SchedulerConfig {
     @Bean("scheduler")
     public Scheduler scheduler() throws IOException {
         return schedulerFactoryBean().getScheduler();
-
     }
 }

@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: springboot-quartz
   datasource:
     druid:
       type: com.alibaba.druid.pool.DruidDataSource
@@ -62,7 +64,18 @@ spring:
         wall:
           config:
             multi-statement-allow: true
-
+  quartz:
+    #数据库方式
+    job-store-type: jdbc
+    #scheduler执行器的名称
+    scheduler-name: ${spring.application.name}
+    #是否覆盖已存在的任务
+    overwrite-existing-jobs: off
+    #延迟启动时间
+    startup-delay: 500ms
+    #初始化表结构
+    jdbc:
+      initialize-schema: never
 
 mybatis:
   # mapper xml实现扫描路径

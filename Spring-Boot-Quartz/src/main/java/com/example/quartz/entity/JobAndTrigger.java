@@ -67,7 +67,7 @@ public class JobAndTrigger implements Serializable {
     }
 
     public Date getStartTime() {
-        return startTime;
+        return startTime != null ? startTime : new Date();
     }
 
     public void setStartTime(Date startTime) {

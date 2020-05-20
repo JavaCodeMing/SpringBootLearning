@@ -10,15 +10,11 @@ import java.util.Date;
 /**
  * Created by dengzhiming on 2019/8/1
  */
-public class NewJob implements BaseJob {
+public class NewJob extends BaseJob {
 
     private static Logger logger = LoggerFactory.getLogger(NewJob.class);
-
-    public NewJob() {
-    }
-
     @Override
-    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+    protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         logger.info("NewJob执行的时间: " + new Date());
     }
 }
