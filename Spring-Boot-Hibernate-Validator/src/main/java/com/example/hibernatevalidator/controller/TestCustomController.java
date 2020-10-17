@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestCustomController {
     @GetMapping("test3")
     @ResponseBody
-    public String test3(
-            @MyConstraint(message = "{illegal}")
-                    String name) {
+    public String test3(@MyConstraint(message = "{illegal}") String name) {
         return "success";
     }
 }

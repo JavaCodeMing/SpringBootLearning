@@ -4,7 +4,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -35,15 +34,15 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({BindException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleBindException(BindException e) {
-        StringBuilder message = new StringBuilder();
-        FieldError fieldError = e.getFieldError();
-        message.append("Object:")
-                .append(e.getObjectName())
-                .append(" Field:")
-                .append(fieldError.getField())
-                .append(" Message:")
-                .append(fieldError.getDefaultMessage());
-        return message.toString();
+        StringBuilder stringBuilder = new StringBuilder();
+        e.getFieldErrors().forEach(item ->{
+            // 获取错误的属性的名字
+            String field = item.getField();
+            // 获取到错误提示
+            String message = item.getDefaultMessage();
+            stringBuilder.append(field).append("-").append(message).append(", ");
+        });
+        return stringBuilder.toString();
     }
 
 }

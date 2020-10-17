@@ -23,10 +23,6 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public String getName() {
         return name;
     }
