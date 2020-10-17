@@ -85,46 +85,46 @@
         public interface AddGroup {}
         public interface UpdateGroup {}
     [2]给需要校验的实体类属性添加校验注解:
-		public class Student {
-			@Min(value = 1, groups = {AddGroup.class})
-			private int studentNo;
-			@NotBlank(message = "姓名不能为空", groups = {AddGroup.class, UpdateGroup.class})
-			private String name;
-			@Min(value = 1,groups = {AddGroup.class, UpdateGroup.class})
-			private int age;
-			@Pattern(regexp = "^[0|1]$",message = "性别只能是1:男 0:女",
-				groups = {AddGroup.class,UpdateGroup.class})
-			private String gender;
-			public Student() {}
-			// get,set略
-		}
-	[3]使用@Validated修饰参数为包含校验属性对象:
-		@Controller
-		public class TestGroupController {
-			// 注: 参数BindingResult对象打开,则需要在方法中处理校验异常,关闭则可交由统一异常处理方法处理
-			@GetMapping("test3")
-			@ResponseBody
-			public String test3(@Validated(AddGroup.class) Student student,
-					BindingResult result) {
-				if(result.hasErrors()){
-					StringBuilder stringBuilder = new StringBuilder();
-					// 获取校验的错误结果
-					result.getFieldErrors().forEach(item->{
-						// 获取错误的属性的名字
-						String field = item.getField();
-						// 获取到错误提示
-						String message = item.getDefaultMessage();
-						stringBuilder.append(field).append("-").append(message).append(", ");
-					});
-					return "提交的数据不合法: "+ stringBuilder.toString();
-				}
-				return "success";
-			}
-		}
-		注: 
-		    使用分组校验后,未添加分组的属性不会进行校验;
-		    BindingResult对象一旦在方法参数中使用,校验异常时会自动将异常捕捉封装进该对象,不会向外抛出;
-	[4]测试: http://localhost:8080/test3?studentNo=1&name=柯南&age=8&gender=1
+        public class Student {
+            @Min(value = 1, groups = {AddGroup.class})
+            private int studentNo;
+            @NotBlank(message = "姓名不能为空", groups = {AddGroup.class, UpdateGroup.class})
+            private String name;
+            @Min(value = 1,groups = {AddGroup.class, UpdateGroup.class})
+            private int age;
+            @Pattern(regexp = "^[0|1]$",message = "性别只能是1:男 0:女",
+                groups = {AddGroup.class,UpdateGroup.class})
+            private String gender;
+            public Student() {}
+            // get,set略
+        }
+    [3]使用@Validated修饰参数为包含校验属性对象:
+        @Controller
+        public class TestGroupController {
+            // 注: 参数BindingResult对象打开,则需要在方法中处理校验异常,关闭则可交由统一异常处理方法处理
+            @GetMapping("test3")
+            @ResponseBody
+            public String test3(@Validated(AddGroup.class) Student student,
+                    BindingResult result) {
+                if(result.hasErrors()){
+                    StringBuilder stringBuilder = new StringBuilder();
+                    // 获取校验的错误结果
+                    result.getFieldErrors().forEach(item->{
+                        // 获取错误的属性的名字
+                        String field = item.getField();
+                        // 获取到错误提示
+                        String message = item.getDefaultMessage();
+                        stringBuilder.append(field).append("-").append(message).append(", ");
+                    });
+                    return "提交的数据不合法: "+ stringBuilder.toString();
+                }
+                return "success";
+            }
+        }
+        注: 
+            使用分组校验后,未添加分组的属性不会进行校验;
+            BindingResult对象一旦在方法参数中使用,校验异常时会自动将异常捕捉封装进该对象,不会向外抛出;
+    [4]测试: http://localhost:8080/test3?studentNo=1&name=柯南&age=8&gender=1
 6.自定义校验规则:
     [1]自定义校验注解的基本格式:
         @Target({ElementType.FIELD, ElementType.METHOD})
