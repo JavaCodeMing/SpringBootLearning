@@ -79,7 +79,7 @@
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <!--使用Maven运行MyBatis Geneator要配置5.x版本MySQL驱动,否则会有问题-->
-                        <version>5.1.47</version>
+                        <version>8.0.28</version>
                     </dependency>
                     <dependency>
                         <groupId>tk.mybatis</groupId>
